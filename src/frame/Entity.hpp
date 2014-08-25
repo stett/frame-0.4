@@ -7,21 +7,41 @@
 #include <map>
 #include <memory>
 #include "Component.hpp"
+#include "Signals.hpp"
 using std::set;
 using std::map;
 using std::shared_ptr;
 using std::type_index;
 using std::dynamic_pointer_cast;
+using frame::Signal;
+using frame::SignalManager;
 
 namespace frame {
 
-    class Entity {
+
+    class entity;
+    class setcomponentsignal : public signal {
+    public:
+        setcomponentsignal(entity* e_, type_index c_type_) : e(e_), c_type(c_type_) {}
+        setcomponentsignal(shared_ptr<entity> e_, type_index c_type_) : e(e_), c_type(c_type_) {}
+        shared_ptr<entity> e;
+        type_index c_type;
+    };
+    class removecomponentsignal : public signal {
+    public:
+        removecomponentsignal(shared_ptr<entity> e_, type_index c_type_) : e(e_), c_type(c_type_) {}
+        shared_ptr<entity> e;
+        type_index c_type;
+    };
+
+
+    class Entity : public SignalManager {
     private:
         map<type_index, shared_ptr<Component>> components;
 
     public:
-        Entity() {}
-        virtual ~Entity() {}
+        Entity();
+        ~Entity() {}
 
     public:
         // set_component<Component>()
@@ -29,34 +49,27 @@ namespace frame {
         // Add a new component with default constructor settings. Note
         // it is not called "add_component" because each entity may only
         // have one of any type of component.
-        template <typename T>
-        // typename enable_if<is_base_of<Component, T>::value, shared_ptr<T>::type
-        shared_ptr<T> set_component() {
-            //return dynamic_pointer_cast<T>(set_component(new T()));
-            auto c = shared_ptr<Component>(new T());
-            components[type_index(typeid(T))] = c;
-            return dynamic_pointer_cast<T>(c);
-        }
-
-        // set_component(Component*)
         //
-        // Add a new component via the new statement, specifying
-        // constructor arguments. Should be called like so:
-        // add_component(new Component(...))
-        /*shared_ptr<Component> set_component(Component* c) {
-            auto c_ptr = shared_ptr<Component>(c);
-            auto c_type = type_index(typeid(c_ptr));
-            components[c_type] = c_ptr;
-            return c_ptr;
-        }*/
+        // TODO(stett):
+        // Add an "enable_if" to ensure that T always has the Component
+        // base type
+        template <typename T>
+        shared_ptr<T> set_component() {
+            auto c = shared_ptr<T>(new T());
+            auto c_type = type_index(typeid(T));
+            components[c_type] = shared_ptr<Component>(c);
+            dispatch<SetComponentSignal>(new SetComponentSignal(this, c_type));
+            return c;
+        }
 
         // get_component<Component>()
         //
         // Get a component belonging to the entity with a type of Component
         template <typename T>
-        // typename enable_if<is_base_of<Component, T>::value, shared_ptr<T>::type
         shared_ptr<T> get_component() {
-            return 0;
+            auto component_it = components.find(type_index(typeid(T)));
+            if (component_it == components.end()) return 0;
+            return dynamic_pointer_cast<T>(component_it->second);
         }
 
         // [<Component>]
@@ -77,8 +90,6 @@ namespace frame {
         set<shared_ptr<Entity>>::const_iterator begin() const { return entities.begin(); }
         set<shared_ptr<Entity>>::const_iterator end() const { return entities.end(); }
         set<shared_ptr<Entity>>::size_type size() const { return entities.size(); }
-        set<shared_ptr<Entity>>::size_type count(shared_ptr<Entity> e) const {
-            return entities.count(e);
-        }
+        set<shared_ptr<Entity>>::size_type count(shared_ptr<Entity> e) const { return entities.count(e); }
     };
 }
