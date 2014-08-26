@@ -8,12 +8,20 @@
 	"build_system": "Debug",
 	"command_palette":
 	{
-		"height": 391.0,
+		"height": 417.0,
 		"selected_items":
 		[
 			[
 				":w",
 				":w - Save"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
 			],
 			[
 				"inst	",
@@ -52,10 +60,6 @@
 				"Set Syntax: SQL"
 			],
 			[
-				":",
-				":w - Save"
-			],
-			[
 				":c++",
 				"Set Syntax: C++"
 			],
@@ -76,7 +80,7 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 589.0
+		"width": 611.0
 	},
 	"console":
 	{
@@ -98,13 +102,28 @@
 	},
 	"file_history":
 	[
-		"/home/stett/projects/frame/0.4/frame/src/frame-test/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/interfaces/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-workspace",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/Position.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/List.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Entity.hpp",
+		"/home/stett/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/stett/projects/frame/0.4/frame/.gitignore",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CHANGES",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Node.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Parent.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Children.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/position.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/test_frame.h",
 		"/home/stett/projects/frame/0.4/frame/build/test.sh",
 		"/home/stett/projects/frame/0.4/frame/build/build-debug.sh",
 		"/home/stett/projects/frame/0.4/frame/build/debug/build.sh",
 		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
 		"/home/stett/.Xresources",
 		"/home/stett/.config/sublime-text-3/Packages/User/Solarized",
 		"/home/stett/.config/sublime-text-3/Packages/User/(Light)",
@@ -210,32 +229,19 @@
 		"/home/stett/projects/brooksource-website/brooksource/templates/about.html",
 		"/home/stett/projects/brooksource-website/brooksource/templates/login.html",
 		"/home/stett/projects/brooksource-website/brooksource/templates/profile.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/meda_base.html",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/ckeditor/templates/browse.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/bh-resume.html",
-		"/home/stett/projects/brooksource-website/brooksource/wsgi.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/migrations/0001_initial.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/markdown/serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/authtoken/serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/django/contrib/sessions/serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/tests/accounts/serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/tests/users/serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/tests/test_serializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/tests/test_serializer_nested.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/rest_framework/tests/test_hyperlinkedserializers.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/django/core/serializers/xml_serializer.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/django/core/serializers/__init__.py"
+		"/home/stett/projects/brooksource-website/brooksource/templates/meda_base.html"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
 		"height": 101.0,
 		"where_history":
 		[
+			"queryset.hpp",
+			"test_frame.h",
 			"resume.html"
 		]
 	},
@@ -244,6 +250,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"query_map",
+			"frame::",
+			"entities",
 			"background",
 			"selection",
 			"[\"l\"]",
@@ -311,7 +320,7 @@
 	},
 	"incremental_find":
 	{
-		"height": 36.0
+		"height": 38.0
 	},
 	"input":
 	{
@@ -326,11 +335,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -350,7 +366,7 @@
 	},
 	"replace":
 	{
-		"height": 42.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -358,6 +374,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"en",
+				"src/frame/Entity.hpp"
+			],
+			[
+				"entity",
+				"src/frame/Entity.hpp"
+			],
+			[
+				"cmake",
+				"src/CMakeLists.txt"
+			],
 			[
 				"",
 				"loans/models.py"
@@ -776,7 +804,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 226.0,
+	"side_bar_width": 171.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

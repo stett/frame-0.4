@@ -27,9 +27,9 @@ namespace {
     TEST_F(FrameTest, TestAddComponent) {
 
         // Create an entity and add a Position component to it
-        shared_ptr<Entity> e = f.add_entity();
+        auto e = f.add_entity();
         ASSERT_NE(e, shared_ptr<Entity>(0));
-        shared_ptr<Component> c = e->set_component<Position>();
+        auto c = e->add_component<Position>();
         ASSERT_NE(c, shared_ptr<Component>(0));
 
         // Ensure that the entity contains the Position component we added
@@ -37,9 +37,10 @@ namespace {
 
         // Get all entities that have a Position component,
         // and assert that it only contains the one we just made
-        EntitySet entities = f.get_entities<Position>();
-        ASSERT_EQ(entities.size(), 1);
-        ASSERT_EQ(entities.count(e), 1);
-        ASSERT_EQ(*entities.begin(), e);
+        int i = 0;
+        for (auto e_it : f.get_entities<Position>()) {
+            ASSERT_EQ(i++, 1);
+            ASSERT_EQ(e_it.second, e);
+        }
     }
 }

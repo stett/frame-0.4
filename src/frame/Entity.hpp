@@ -7,59 +7,49 @@
 #include <map>
 #include <memory>
 #include "Component.hpp"
-#include "Signals.hpp"
+#include "FrameInterface.h"
 using std::set;
 using std::map;
 using std::shared_ptr;
 using std::type_index;
 using std::dynamic_pointer_cast;
-using frame::Signal;
-using frame::SignalManager;
 
 namespace frame {
 
+    class Entity {
+        friend class Frame;
 
-    class entity;
-    class setcomponentsignal : public signal {
-    public:
-        setcomponentsignal(entity* e_, type_index c_type_) : e(e_), c_type(c_type_) {}
-        setcomponentsignal(shared_ptr<entity> e_, type_index c_type_) : e(e_), c_type(c_type_) {}
-        shared_ptr<entity> e;
-        type_index c_type;
-    };
-    class removecomponentsignal : public signal {
-    public:
-        removecomponentsignal(shared_ptr<entity> e_, type_index c_type_) : e(e_), c_type(c_type_) {}
-        shared_ptr<entity> e;
-        type_index c_type;
-    };
-
-
-    class Entity : public SignalManager {
-    private:
+    protected:
         map<type_index, shared_ptr<Component>> components;
+        FrameInterface* f;
 
     public:
-        Entity();
+        explicit Entity(FrameInterface* f) : f(f) {}
         ~Entity() {}
 
     public:
-        // set_component<Component>()
+        // add_component<Component>()
         //
-        // Add a new component with default constructor settings. Note
-        // it is not called "add_component" because each entity may only
-        // have one of any type of component.
+        // Add a new component with default constructor settings.
         //
         // TODO(stett):
         // Add an "enable_if" to ensure that T always has the Component
         // base type
         template <typename T>
-        shared_ptr<T> set_component() {
-            auto c = shared_ptr<T>(new T());
-            auto c_type = type_index(typeid(T));
-            components[c_type] = shared_ptr<Component>(c);
-            dispatch<SetComponentSignal>(new SetComponentSignal(this, c_type));
-            return c;
+        shared_ptr<T> add_component() {
+            auto c = add_component(new T());
+            return dynamic_pointer_cast<T>(c);
+        }
+        shared_ptr<Component> add_component(Component* c) {
+            return f->entity_add_component(this, c);
+        }
+
+        // remove_component<Component>()
+        //
+        // Exactly what it sounds like
+        template <typename T>
+        void remove_component() {
+            f->entity_remove_component(this, type_index(typeid(T)));
         }
 
         // get_component<Component>()
@@ -67,7 +57,8 @@ namespace frame {
         // Get a component belonging to the entity with a type of Component
         template <typename T>
         shared_ptr<T> get_component() {
-            auto component_it = components.find(type_index(typeid(T)));
+            auto type = type_index(typeid(T));
+            auto component_it = components.find(type);
             if (component_it == components.end()) return 0;
             return dynamic_pointer_cast<T>(component_it->second);
         }

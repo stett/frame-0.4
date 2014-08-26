@@ -2,49 +2,74 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
+#include <cstdio>
 #include <typeindex>
-#include <typeinfo>
 #include <memory>
 #include <set>
-#include <list>
 #include "Entity.hpp"
 #include "Node.hpp"
-#include "Signals.hpp"
+#include "FrameInterface.h"
+#include "querymap.hpp"
 using std::shared_ptr;
 using std::set;
-using std::list;
 
 
 namespace frame {
 
-    class Frame {
+    class Frame : public FrameInterface {
     private:
-        set<shared_ptr<Entity>> entities;
-        list<Node> nodes;
-        shared_ptr<Signals> signals;
+        querymap<type_index, shared_ptr<Entity>> entities;
+        set<Node> nodes;
 
     public:
-        Frame() {
-            signals = shared_ptr<Signals>(new Signals());
-        }
+        Frame() {}
+        ~Frame() {}
 
     public:
         // add_entity()
         //
         // Creates a new entity and returns a pointer to it
         shared_ptr<Entity> add_entity() {
-            auto e = shared_ptr<Entity>(new Entity());
-            e->set_signals(signals);
-            entities.insert(e);
+            auto e = shared_ptr<Entity>(new Entity(this));
+            //entities.insert(e);
+            //return entities;
             return e;
         }
 
         // get_entities()
         //
-        // Returns all the entities which own a specific set of components
+        // Returns an iterator over the entities which own a specific set
+        // of component types.
         template <typename... T>
-        EntitySet get_entities() {
-            return EntitySet();
+        querymap<type_index, shared_ptr<Entity> >& get_entities() {
+            querymap<type_index, shared_ptr<Entity>>::keyset keys;
+            [](...) {}((keys.insert(type_index(typeid(T))))...);
+            return entities.find(keys);
+        }
+
+        // entity_add_component(Entity*, ComponentType)
+        //
+        // Add a new component of a specific type to an entity
+        virtual shared_ptr<Component> entity_add_component(Entity* e, Component* c) {
+            auto c_type = type_index(typeid(*c));
+            auto c_ptr = shared_ptr<Component>(c);
+            e->components[c_type] = c_ptr;
+            return c_ptr;
+        }
+
+        // entity_remove_component(Entity*, ComponentType)
+        //
+        //
+        virtual void entity_remove_component(Entity* e, type_index c_type) {
+            //auto c_it = e->components.find(c_type);
+            //if (c_it == e->components.end()) return;
+            //e->components.erase(c_it);
+        }
+
+        virtual void node_add_component(Node* n, type_index c_type) {
+        }
+
+        virtual void node_remove_component(Node* n, type_index c_type) {
         }
     };
 }

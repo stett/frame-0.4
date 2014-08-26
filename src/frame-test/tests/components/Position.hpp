@@ -4,6 +4,8 @@
 
 class Position : public frame::Component {
 public:
+    Position() {}
+    virtual ~Position() {}
     float x;
     float y;
 };
