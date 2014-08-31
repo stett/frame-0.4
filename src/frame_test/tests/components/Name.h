@@ -4,7 +4,7 @@
 #pragma once
 
 #include <string>
-#include "frame/Component.hpp"
+#include "frame/Component.h"
 using std::string;
 
 class Name : public frame::Component {

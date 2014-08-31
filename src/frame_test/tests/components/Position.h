@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "frame/Component.hpp"
+#include "frame/Component.h"
 
 class Position : public frame::Component {
  public:

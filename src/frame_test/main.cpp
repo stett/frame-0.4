@@ -2,7 +2,7 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #include "tests/test_frame.h"
-//#include "tests/test_signals.h"
+#include "tests/test_core.h"
 #include "gtest/gtest.h"
 
 int main(int argc, char** argv) {

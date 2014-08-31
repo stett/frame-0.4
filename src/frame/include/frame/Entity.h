@@ -5,9 +5,9 @@
 #include <typeindex>
 #include <set>
 #include <map>
-#include "frame/Component.hpp"
-#include "frame/Node.hpp"
-#include "frame/FrameInterface.h"
+#include "frame/Component.h"
+#include "frame/Node.h"
+#include "frame/interface/FrameInterface.h"
 using std::set;
 using std::map;
 using std::type_index;
@@ -55,6 +55,14 @@ namespace frame {
             auto component_it = components.find(type);
             if (component_it == components.end()) return 0;
             return (T*)(component_it->second);
+        }
+
+        template <typename T>
+        T* get_or_add_component() {
+            auto c = get_component<T>();
+            if (c == 0)
+                c = add_component<T>();
+            return c;
         }
     };
 }

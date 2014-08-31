@@ -102,24 +102,54 @@
 	},
 	"file_history":
 	[
-		"/home/stett/projects/frame/0.4/frame/README.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/interfaces/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/FamilyInterface.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_base.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/Parent.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/Parent.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_base.h",
+		"/home/stett/projects/frame/0.4/frame/.gitignore",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Entity.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Frame.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_core_components.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Component.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/System.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/Position.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/Name.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/List.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/macros/component_mask_macro.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/component_mask_macro.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/base.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Node.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/cmake/internal_utils.cmake",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/build-aux/install-sh",
+		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/xcode/Samples/FrameworkSample/widget_test.cc",
+		"/home/stett/projects/frame/0.4/frame/build/frame-test/cmake_install.cmake",
+		"/home/stett/projects/frame/0.4/frame/README.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/querymap.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_signals.h",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-death-test_ex_test.cc",
 		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/TargetDirectories.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame/interfaces/FrameInterface.h",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-workspace",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
-		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/Position.hpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame-test/main.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame/core/List.hpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/Entity.hpp",
 		"/home/stett/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/stett/projects/frame/0.4/frame/.gitignore",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CHANGES",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Parent.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Children.hpp",
@@ -128,7 +158,6 @@
 		"/home/stett/projects/frame/0.4/frame/build/test.sh",
 		"/home/stett/projects/frame/0.4/frame/build/build-debug.sh",
 		"/home/stett/projects/frame/0.4/frame/build/debug/build.sh",
-		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
 		"/home/stett/.Xresources",
 		"/home/stett/.config/sublime-text-3/Packages/User/Solarized",
 		"/home/stett/.config/sublime-text-3/Packages/User/(Light)",
@@ -200,36 +229,7 @@
 		"/home/stett/test-resume.html",
 		"/home/stett/projects/brooksource-website/bullhorn_wrapper/backends/resume_parsers.py",
 		"/home/stett/projects/brooksource-website/bullhorn_wrapper/serializers.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/views.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/BULLHORN.md",
-		"/home/stett/projects/brooksource-website/base_sitemap.xml",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/IPython/html/static/components/codemirror/addon/edit/trailingspace.js",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/IPython/nbconvert/filters/tests/test_strings.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/IPython/external/decorators/_numpy_testing_utils.py",
-		"/home/stett/projects/brooksource-website/env/lib/python2.7/site-packages/IPython/external/decorators/_numpy_testing_noseclasses.py",
-		"/home/stett/projects/brooksource-website/brooksource/settings/prod.py",
-		"/home/stett/projects/brooksource-website/brooksource/settings/medasource.py",
-		"/home/stett/projects/brooksource-website/brooksource/settings/local.py",
-		"/home/stett/projects/brooksource-website/brooksource/settings/dev.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/services.py",
-		"/home/stett/projects/brooksource-website/brooksource/settings/stett.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/wrapper/core.py",
-		"/home/stett/projects/brooksource-website/brooksource/templates/resume.html",
-		"/home/stett/projects/brooksource-website/brooksource/views.py",
-		"/home/stett/projects/brooksource-website/brooksource/models.py",
-		"/home/stett/projects/brooksource-website/manage.py",
-		"/home/stett/projects/brooksource-website/brooksource/forms.py",
-		"/home/stett/projects/brooksource-website/brooksource/static/fonts/svgs/fi-arrows-out.svg",
-		"/home/stett/projects/loantrac/loans/exportlib.py",
-		"/home/stett/Downloads/b.csv",
-		"/home/stett/Downloads/a.csv",
-		"/home/stett/Downloads/electrical-solutions-service-llc-loan-payments-2014-08-20 (1).csv",
-		"/home/stett/Downloads/credit-report-data-7-2014 (2).csv",
-		"/home/stett/projects/loantrac/loans/__init__.py",
-		"/home/stett/projects/loantrac/env/include/python2.7/longintrepr.h",
-		"/home/stett/projects/brooksource-website/brooksource/templates/404.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/resume-email-sent.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/event_list.html"
+		"/home/stett/projects/brooksource-website/bullhorn_wrapper/views.py"
 	],
 	"find":
 	{
@@ -250,6 +250,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"delete",
 			"nodes",
 			"entities",
 			"dynamic_pointer_cast",
@@ -375,6 +376,38 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"entit",
+				"src/frame/Entity.hpp"
+			],
+			[
+				"compon",
+				"src/frame/Component.hpp"
+			],
+			[
+				"fram",
+				"src/frame/Frame.hpp"
+			],
+			[
+				"interface",
+				"src/frame/FrameInterface.h"
+			],
+			[
+				"test_",
+				"src/frame-test/tests/test_frame.h"
+			],
+			[
+				"test_fr",
+				"src/frame-test/tests/test_frame.h"
+			],
+			[
+				"test_f",
+				"src/frame-test/tests/test_frame.h"
+			],
+			[
+				"node",
+				"src/frame/Node.hpp"
+			],
 			[
 				"query",
 				"src/frame/querymap.hpp"
@@ -821,7 +854,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 224.0,
+	"side_bar_width": 338.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

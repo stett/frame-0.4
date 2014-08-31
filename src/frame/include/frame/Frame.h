@@ -6,10 +6,10 @@
 #include <cstdio>
 #include <typeinfo>
 #include <set>
-#include "frame/Entity.hpp"
-#include "frame/Node.hpp"
-#include "frame/System.hpp"
-#include "frame/FrameInterface.h"
+#include "frame/Entity.h"
+#include "frame/Node.h"
+#include "frame/System.h"
+#include "frame/interface/FrameInterface.h"
 using std::type_index;
 using std::set;
 
@@ -111,9 +111,12 @@ namespace frame {
 
         virtual void add_component_to_entity(Entity* e, Component* c) {
             auto c_type = type_index(typeid(*c));
-            c->entity = e;
+            auto c_it = e->components.find(c_type);
+            if (c_it != e->components.end())
+                remove_component_from_entity(e, c_it->second);
             e->components[c_type] = c;
             e->mask |= c->mask;
+            c->entity = e;
             ravel(e);
         }
 

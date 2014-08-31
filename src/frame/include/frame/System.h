@@ -2,7 +2,7 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
-#include "frame/FrameInterface.h"
+#include "frame/interface/FrameInterface.h"
 
 
 namespace frame {

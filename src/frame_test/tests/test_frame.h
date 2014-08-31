@@ -5,13 +5,14 @@
 #include <cstdio>
 #include <typeinfo>
 #include "gtest/gtest.h"
-#include "frame/Frame.hpp"
-#include "components/Position.hpp"
-#include "components/Name.hpp"
+#include "frame/Frame.h"
+#include "components/Position.h"
+#include "components/Name.h"
 using frame::Frame;
 using frame::Entity;
 using frame::Component;
 using frame::Node;
+
 
 namespace {
 
@@ -24,8 +25,7 @@ namespace {
 
         Frame f;
     };
-
-
+    
     TEST_F(FrameTest, TestAddEntity) {
 
         // Create a node which doesn't filter anything and an entity

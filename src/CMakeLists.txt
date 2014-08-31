@@ -11,11 +11,14 @@ add_definitions(-std=c++0x
                 -Wall
                 -Wextra)
 
+# Frame
+add_subdirectory(frame)
+
 # GTest
 add_subdirectory(gtest-1.7.0)
 
 # Test program code
-add_subdirectory(frame-test)
+add_subdirectory(frame_test)
 
 # Turn on testing
 enable_testing()

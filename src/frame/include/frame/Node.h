@@ -5,7 +5,7 @@
 #include <typeindex>
 #include <typeinfo>
 #include <set>
-#include "frame/FrameInterface.h"
+#include "frame/interface/FrameInterface.h"
 using std::set;
 
 namespace frame {
