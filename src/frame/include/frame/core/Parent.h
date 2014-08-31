@@ -14,15 +14,11 @@ namespace frame {
 
     public:
         Parent() : parent(0) { mask = 1 << 3; }
-        explicit Parent(Entity* parent) {
-            mask = 1 << 3;
-            set(parent);
-        }
         ~Parent() { clear(); }
 
     public:
-        void set(Entity* e);
-        void clear();
+        Parent* set(Entity* e);
+        Parent* clear();
         Entity* get() { return parent; }
         Entity* operator* () { return parent; }
     };

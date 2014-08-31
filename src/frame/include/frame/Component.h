@@ -7,6 +7,7 @@
 #include <map>
 using std::map;
 
+
 namespace frame {
 
     class Entity;

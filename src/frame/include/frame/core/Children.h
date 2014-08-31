@@ -23,9 +23,9 @@ namespace frame {
         ~Children() { clear(); }
 
     public:
-        void add(Entity* e);
-        void remove(Entity* e);
-        void clear();
+        Children* add(Entity* e);
+        Children* remove(Entity* e);
+        Children* clear();
         unsigned int size() { return child_list.size(); }
         set<Entity*>::iterator begin() { return child_list.begin(); }
         set<Entity*>::iterator end() { return child_list.end(); }

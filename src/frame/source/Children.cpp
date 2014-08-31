@@ -5,6 +5,8 @@
 #include "frame/Entity.h"
 #include "frame/core/Parent.h"
 #include "frame/core/Children.h"
+using frame::Parent;
+using frame::Children;
 
 
 /*
@@ -12,7 +14,7 @@ void Children::Children(...) {
 }
 */
 
-void frame::Children::add(Entity* e_child) {
+Children* Children::add(Entity* e_child) {
 
     // Add entity to child list
     child_list.insert(e_child);
@@ -20,20 +22,28 @@ void frame::Children::add(Entity* e_child) {
     // Add parent component to child entity if necessary
     auto parent = e_child->get_or_add_component<Parent>();
     parent->parent = entity;
+
+    // Return this children for command chaining
+    return this;
 }
 
-void frame::Children::remove(Entity* e_child) {
+Children* Children::remove(Entity* e_child) {
 
     // Remove the child from the child list.
     // If it wasn't in the list, stop here.
-    if (child_list.erase(e_child) == 0) return;
+    if (child_list.erase(e_child) == 0)
+        return this;
 
     // Clear the child's parent pointer
     auto parent = e_child->get_component<Parent>();
     parent->parent = 0;
+
+    // Return this children for command chaining
+    return this;
 }
 
-void frame::Children::clear() {
+Children* frame::Children::clear() {
     while (size())
         remove(*begin());
+    return this;
 }

@@ -4,8 +4,10 @@
 #include "frame/Entity.h"
 #include "frame/core/Parent.h"
 #include "frame/core/Children.h"
+using frame::Parent;
+using frame::Children;
 
-void frame::Parent::set(Entity* e) {
+Parent* Parent::set(Entity* e) {
 
     // If we had a previous parent, remove ourself
     // from its list of children.
@@ -18,15 +20,22 @@ void frame::Parent::set(Entity* e) {
     // and add this entity to its child list.
     auto children = parent->get_or_add_component<Children>();
     children->child_list.insert(entity);
+
+    // Return this parent for command chaining
+    return this;
 }
 
-void frame::Parent::clear() {
+Parent* Parent::clear() {
 
     // If parent was unset, then we don't need to remove this
     // from its children.
-    if (parent == 0) return;
+    if (parent == 0)
+        return this;
 
     // Remove ourselves from our old parent's child list
     auto children = parent->get_component<Children>();
     children->child_list.erase(entity);
+
+    // Return this parent for command chaining
+    return this;
 }
