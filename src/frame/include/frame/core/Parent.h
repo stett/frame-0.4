@@ -13,7 +13,7 @@ namespace frame {
         Entity* parent;
 
     public:
-        Parent() : parent(0) { mask = 1 << 3; }
+        Parent() : parent(0) { mask = 1 << 1; }
         ~Parent() { clear(); }
 
     public:

@@ -22,11 +22,6 @@ namespace {
 
     class CoreTest : public ::testing::Test {
     protected:
-        CoreTest() {}
-        virtual ~CoreTest() {}
-        virtual void SetUp() {}
-        virtual void TearDown() {}
-
         Frame f;
     };
 

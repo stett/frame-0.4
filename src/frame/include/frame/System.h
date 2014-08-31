@@ -2,19 +2,20 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
-#include "frame/interface/FrameInterface.h"
 
 
 namespace frame {
+
+    class Frame;
 
     class System {
         friend class Frame;
 
     protected:
-        FrameInterface* f;
+        Frame* f;
 
     public:
-        explicit System(FrameInterface* f) : f(f) {}
+        explicit System(Frame* f) : f(f) {}
         virtual ~System() {}
 
     protected:

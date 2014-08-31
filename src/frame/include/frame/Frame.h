@@ -68,7 +68,7 @@ namespace frame {
 
         template <typename T>
         T* add_system() {
-            T* s = new System(this);
+            T* s = new T(this);
             systems.insert(s);
             return s;
         }
@@ -88,6 +88,12 @@ namespace frame {
                 remove_system(*systems.begin());
         }
 
+        void remove_system(System* s) {
+            systems.erase(s);
+            delete s;
+        }
+
+    public:
         virtual void remove_entity(Entity* e) {
             for (auto c: e->components)
                 delete c.second;
@@ -95,18 +101,6 @@ namespace frame {
                 unravel(n, e);
             entities.erase(e);
             delete e;
-        }
-
-        virtual void remove_node(Node* n) {
-            for (auto e : n->entities)
-                unravel(n, e);
-            nodes.erase(n);
-            delete n;
-        }
-
-        virtual void remove_system(System* s) {
-            systems.erase(s);
-            delete s;
         }
 
         virtual void add_component_to_entity(Entity* e, Component* c) {
@@ -126,6 +120,13 @@ namespace frame {
             e->mask &= !c->mask;
             unravel(e);
             delete c;
+        }
+
+        virtual void remove_node(Node* n) {
+            for (auto e : n->entities)
+                unravel(n, e);
+            if (nodes.erase(n))
+                delete n;
         }
 
         virtual void add_components_to_node(Node* n, unsigned int mask) {
@@ -175,12 +176,14 @@ namespace frame {
     public:
         virtual void run() {
             for (auto s : systems) s->start();
-            while (running) {
-                for (auto s : systems) s->step_begin();
-                for (auto s : systems) s->step();
-                for (auto s : systems) s->step_end();
-            }
+            while (running) step();
             for (auto s : systems)s->stop();
+        }
+
+        virtual void step() {
+            for (auto s : systems) s->step_begin();
+            for (auto s : systems) s->step();
+            for (auto s : systems) s->step_end();
         }
 
         virtual void stop() {

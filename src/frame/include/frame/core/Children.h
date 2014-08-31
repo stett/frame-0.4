@@ -16,7 +16,7 @@ namespace frame {
         set<Entity*> child_list;
 
     public:
-        Children() { mask = 1 << 2; }
+        Children() { mask = 1; }
         /*
         explicit Children(...);
         */

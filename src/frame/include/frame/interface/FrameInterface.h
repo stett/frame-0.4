@@ -17,6 +17,7 @@ namespace frame {
 
         // Universal
         virtual void run() = 0;
+        virtual void step() = 0;
         virtual void stop() = 0;
 
         // Entity interface
@@ -28,9 +29,6 @@ namespace frame {
         virtual void remove_node(Node* n) = 0;
         virtual void add_components_to_node(Node* n, unsigned int mask) = 0;
         virtual void remove_components_from_node(Node* n, unsigned int mask) = 0;
-
-        // System interface
-        virtual void remove_system(System* s) = 0;
     };
 }
   

@@ -28,13 +28,15 @@ namespace frame {
         }
 
         template <typename T>
-        void add_component() {
+        Node* add_component() {
             f->add_components_to_node(this, T().mask);
+            return this;
         }
 
         template <typename T>
-        void remove_component() {
+        Node* remove_component() {
             f->remove_components_from_node(this, T().mask);
+            return this;
         }
 
         unsigned int size() { return entities.size(); }

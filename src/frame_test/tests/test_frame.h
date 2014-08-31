@@ -18,11 +18,6 @@ namespace {
 
     class FrameTest : public ::testing::Test {
     protected:
-        FrameTest() {}
-        virtual ~FrameTest() {}
-        virtual void SetUp() {}
-        virtual void TearDown() {}
-
         Frame f;
     };
     
