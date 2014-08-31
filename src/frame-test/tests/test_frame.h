@@ -7,10 +7,11 @@
 #include "gtest/gtest.h"
 #include "frame/Frame.hpp"
 #include "components/Position.hpp"
+#include "components/Name.hpp"
 using frame::Frame;
 using frame::Entity;
-using frame::EntitySet;
 using frame::Component;
+using frame::Node;
 
 namespace {
 
@@ -24,23 +25,54 @@ namespace {
         Frame f;
     };
 
+
+    TEST_F(FrameTest, TestAddEntity) {
+
+        // Create a node which doesn't filter anything and an entity
+        // which has no components, and assert that the node contains
+        // the entity.
+        auto n = f.add_node();
+        auto e = f.add_entity();
+        EXPECT_EQ(n->size(), (unsigned)1) << "Node should have exactly one entity";
+        EXPECT_NE(n->find(e), n->end()) << "Entity with no components not found in node without filters";
+    }
+
     TEST_F(FrameTest, TestAddComponent) {
 
-        // Create an entity and add a Position component to it
+        // Create an entity and add a Position component to it, and
+        // make sure they point to each other after the operation.
         auto e = f.add_entity();
-        ASSERT_NE(e, shared_ptr<Entity>(0));
         auto c = e->add_component<Position>();
-        ASSERT_NE(c, shared_ptr<Component>(0));
+        EXPECT_EQ(c->get_entity(), e) << "Component entity pointer should be set to the entity we just added it to";
+        EXPECT_EQ(e->get_component<Position>(), c) << "Entity's component list should contain the component we just added";
+    }
 
-        // Ensure that the entity contains the Position component we added
-        ASSERT_EQ(e->get_component<Position>(), c);
+    TEST_F(FrameTest, TestNodeLists) {
 
-        // Get all entities that have a Position component,
-        // and assert that it only contains the one we just made
-        int i = 0;
-        for (auto e_it : f.get_entities<Position>()) {
-            ASSERT_EQ(i++, 1);
-            ASSERT_EQ(e_it.second, e);
-        }
+        // Create some nodes with various components
+        auto n00 = f.add_node();
+        auto n01 = f.add_node<Position>();
+
+        // Create entities with various combinations of components
+        auto e00 = f.add_entity();
+        auto e01 = f.add_entity<Position>();
+        auto e10 = f.add_entity<Name>();
+        auto e11 = f.add_entity<Position, Name>();
+
+        // Create some more nodes with various components
+        auto n10 = f.add_node<Name>();
+        auto n11 = f.add_node<Position, Name>();
+
+        // Make sure the nodes contain what they should
+        EXPECT_EQ(n00->size(), (unsigned)4);
+        EXPECT_EQ(n01->size(), (unsigned)2);
+        EXPECT_EQ(n10->size(), (unsigned)2);
+        EXPECT_EQ(n11->size(), (unsigned)1);
+        EXPECT_NE(n00->find(e00), n00->end());
+        EXPECT_NE(n01->find(e01), n01->end());
+        EXPECT_NE(n01->find(e11), n01->end());
+        EXPECT_NE(n10->find(e10), n10->end());
+        EXPECT_NE(n10->find(e11), n10->end());
+        EXPECT_NE(n11->find(e11), n11->end());
     }
 }

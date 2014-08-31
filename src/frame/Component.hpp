@@ -9,9 +9,23 @@ using std::map;
 
 namespace frame {
 
+    class Entity;
+
     class Component {
+        friend class Frame;
+        friend class Node;
+
+    protected:
+        unsigned int mask;
+        Entity* entity;
+
     public:
-        Component() {}
+        Component() : mask(0), entity(0) {}
         virtual ~Component() {}
+
+    public:
+        const Entity* get_entity() const {
+            return entity;
+        }
     };
-};
+}

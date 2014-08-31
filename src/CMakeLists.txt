@@ -7,7 +7,9 @@ project (FrameTest)
 
 # Set up compiler definitions
 add_definitions(-std=c++0x
-                -pthread)
+                -pthread
+                -Wall
+                -Wextra)
 
 # GTest
 add_subdirectory(gtest-1.7.0)

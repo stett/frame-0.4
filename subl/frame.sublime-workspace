@@ -102,8 +102,14 @@
 	},
 	"file_history":
 	[
-		"/home/stett/projects/frame/0.4/frame/src/frame/interfaces/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/README.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/Node.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/querymap.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_signals.h",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-death-test_ex_test.cc",
+		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/TargetDirectories.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/interfaces/FrameInterface.h",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-workspace",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/Position.hpp",
@@ -115,7 +121,6 @@
 		"/home/stett/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/stett/projects/frame/0.4/frame/.gitignore",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CHANGES",
-		"/home/stett/projects/frame/0.4/frame/src/frame/Node.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Parent.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Children.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/position.hpp",
@@ -224,12 +229,7 @@
 		"/home/stett/projects/loantrac/env/include/python2.7/longintrepr.h",
 		"/home/stett/projects/brooksource-website/brooksource/templates/404.html",
 		"/home/stett/projects/brooksource-website/brooksource/templates/resume-email-sent.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/event_list.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/thankyou.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/about.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/login.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/profile.html",
-		"/home/stett/projects/brooksource-website/brooksource/templates/meda_base.html"
+		"/home/stett/projects/brooksource-website/brooksource/templates/event_list.html"
 	],
 	"find":
 	{
@@ -250,6 +250,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"nodes",
+			"entities",
+			"dynamic_pointer_cast",
+			"dynamic",
+			"querymap",
+			"set_signals",
+			"query_map",
+			"f->",
 			"query_map",
 			"frame::",
 			"entities",
@@ -335,18 +343,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -374,6 +375,22 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"query",
+				"src/frame/querymap.hpp"
+			],
+			[
+				"test_frame",
+				"src/frame-test/tests/test_frame.h"
+			],
+			[
+				"frame",
+				"src/frame/Frame.hpp"
+			],
+			[
+				"enti",
+				"src/frame/Entity.hpp"
+			],
 			[
 				"en",
 				"src/frame/Entity.hpp"
@@ -804,7 +821,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 171.0,
+	"side_bar_width": 224.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

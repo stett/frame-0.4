@@ -4,42 +4,47 @@
 #pragma once
 #include <typeindex>
 #include <typeinfo>
-#include <memory>
 #include <set>
-#include "FrameInterface.h"
-using std::shared_ptr;
+#include "frame/FrameInterface.h"
 using std::set;
 
 namespace frame {
+    class Entity;
+
     class Node {
         friend class Frame;
-        
+    public:
+        explicit Node(FrameInterface* f) : mask(0), f(f) {}
+        virtual ~Node() {}
+
     protected:
-        set<type_index> components;
-        set<shared_ptr<Entity>> entities;
+        unsigned int mask;
+        set<Entity*> entities;
         FrameInterface* f;
 
+    public:
+        void remove() {
+            f->remove_node(this);
+        }
 
         template <typename T>
-        // typename enable_if<is_base_of<Component, T>::value, void>::type
         void add_component() {
-            f->node_add_component(this, type_index(typeid(T)));
-            //components.insert(type_index(typeid(T)));
+            f->add_components_to_node(this, T().mask);
         }
 
-    public:
-        Node(FrameInterface* f) : f(f) {}
-        virtual ~Node() {}
-    };
+        template <typename T>
+        void remove_component() {
+            f->remove_components_from_node(this, T().mask);
+        }
 
-    /*
-    template <class... T>
-    // typename enable_if<are_base_of<Component, T...>::value>::type
-    class NodeT : public Node {
-    public:
-        NodeT() {
-            [](...) {}((components.insert(type_index(typeid(T))))...);
+        unsigned int size() { return entities.size(); }
+        set<Entity*>::iterator find(Entity* e) { return entities.find(e); }
+        set<Entity*>::iterator begin() { return entities.begin(); }
+        set<Entity*>::iterator end() { return entities.end(); }
+
+
+        const set<Entity*>& get_entities() const {
+            return entities;
         }
     };
-    */
 }

@@ -2,15 +2,14 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
-#include <cstdio>
 #include <typeindex>
-#include <memory>
+#include <cstdio>
+#include <typeinfo>
 #include <set>
 #include "Entity.hpp"
 #include "Node.hpp"
-#include "FrameInterface.h"
-#include "querymap.hpp"
-using std::shared_ptr;
+#include "frame/FrameInterface.h"
+using std::type_index;
 using std::set;
 
 
@@ -18,58 +17,126 @@ namespace frame {
 
     class Frame : public FrameInterface {
     private:
-        querymap<type_index, shared_ptr<Entity>> entities;
-        set<Node> nodes;
+        set<Entity*> entities;
+        set<Node*> nodes;
 
     public:
         Frame() {}
-        ~Frame() {}
+        ~Frame() {
+            clear_entities();
+            clear_nodes();
+        }
 
     public:
-        // add_entity()
-        //
-        // Creates a new entity and returns a pointer to it
-        shared_ptr<Entity> add_entity() {
-            auto e = shared_ptr<Entity>(new Entity(this));
-            //entities.insert(e);
-            //return entities;
+
+        Entity* add_entity() {
+            Entity* e = new Entity(this);
+            entities.insert(e);
+            ravel(e);
             return e;
         }
 
-        // get_entities()
-        //
-        // Returns an iterator over the entities which own a specific set
-        // of component types.
         template <typename... T>
-        querymap<type_index, shared_ptr<Entity> >& get_entities() {
-            querymap<type_index, shared_ptr<Entity>>::keyset keys;
-            [](...) {}((keys.insert(type_index(typeid(T))))...);
-            return entities.find(keys);
+        Entity* add_entity() {
+            Entity* e = new Entity(this);
+            entities.insert(e);
+            // TODO(stett):
+            // Do something else, so that it doesn't try to re-ravel for
+            // every single component... just need to do that once, really.
+            [](...) {} ((e->add_component<T>())...);
+            return e;
         }
 
-        // entity_add_component(Entity*, ComponentType)
-        //
-        // Add a new component of a specific type to an entity
-        virtual shared_ptr<Component> entity_add_component(Entity* e, Component* c) {
+        Node* add_node() {
+            Node* n = new Node(this);
+            nodes.insert(n);
+            ravel(n);
+            return n;
+        }
+
+        template <typename... T>
+        Node* add_node() {
+            Node* n = new Node(this);
+            nodes.insert(n);
+            [](...) {} ((n->mask |= T().mask)...);
+            ravel(n);
+            return n;
+        }
+
+        void clear_entities() {
+            while (entities.size())
+                remove_entity(*entities.begin());
+        }
+
+        void clear_nodes() {
+            while (nodes.size())
+                remove_node(*nodes.begin());
+        }
+
+        virtual void remove_entity(Entity* e) {
+            for (auto n : e->nodes)
+                unravel(n, e);
+            entities.erase(e);
+            delete e;
+        }
+
+        virtual void remove_node(Node* n) {
+            for (auto e : n->entities)
+                unravel(n, e);
+            nodes.erase(n);
+            delete n;
+        }
+
+        virtual void add_component_to_entity(Entity* e, Component* c) {
             auto c_type = type_index(typeid(*c));
-            auto c_ptr = shared_ptr<Component>(c);
-            e->components[c_type] = c_ptr;
-            return c_ptr;
+            c->entity = e;
+            e->components[c_type] = c;
+            e->mask |= c->mask;
+            ravel(e);
         }
 
-        // entity_remove_component(Entity*, ComponentType)
-        //
-        //
-        virtual void entity_remove_component(Entity* e, type_index c_type) {
-            //auto c_it = e->components.find(c_type);
-            //if (c_it == e->components.end()) return;
-            //e->components.erase(c_it);
+        virtual void add_components_to_node(Node* n, unsigned int mask) {
+            n->mask |= mask;
+            unravel(n);
         }
 
-        virtual void node_add_component(Node* n, type_index c_type) {
+        virtual void remove_components_from_node(Node* n, unsigned int mask) {
+            n->mask &= (!mask);
+            ravel(n);
         }
 
-        virtual void node_remove_component(Node* n, type_index c_type) {
+    private:
+        // Raveling functions associate nodes with entities based on their masks
+        void ravel(Entity* e) {
+            for (auto n : nodes)
+                if ((n->mask & e->mask) >= n->mask)
+                    ravel(n, e);
+        }
+        void ravel(Node* n) {
+            for (auto e : entities)
+                if ((n->mask & e->mask) >= n->mask)
+                    ravel(n, e);
+        }
+        void ravel(Node* n, Entity* e) {
+            n->entities.insert(e);
+            e->nodes.insert(n);
+        }
+
+        // Unraveling functions take a specific node or entity and dis-associate
+        // them from the entities or nodes with which they no longer match
+        void unravel(Entity* e) {
+            for (auto n : e->nodes)
+                if ((n->mask & e->mask) < n->mask)
+                    unravel(n, e);
+        }
+        void unravel(Node* n) {
+            for (auto e : n->entities)
+                if ((n->mask & e->mask) < n->mask)
+                    unravel(n, e);
+        }
+        void unravel(Node* n, Entity* e) {
+            n->entities.erase(e);
+            e->nodes.erase(n);
         }
     };
 }

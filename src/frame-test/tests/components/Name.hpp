@@ -3,14 +3,15 @@
 
 #pragma once
 
+#include <string>
 #include "frame/Component.hpp"
+using std::string;
 
-class Position : public frame::Component {
+class Name : public frame::Component {
  public:
-    Position() : x(0), y(0) {
-        mask = 1;
+    Name() : str("name") {
+        mask = 1 << 1;
     }
-    virtual ~Position() {}
-    float x;
-    float y;
+    virtual ~Name() {}
+    string str;
 };
