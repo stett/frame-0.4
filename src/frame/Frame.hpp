@@ -6,8 +6,9 @@
 #include <cstdio>
 #include <typeinfo>
 #include <set>
-#include "Entity.hpp"
-#include "Node.hpp"
+#include "frame/Entity.hpp"
+#include "frame/Node.hpp"
+#include "frame/System.hpp"
 #include "frame/FrameInterface.h"
 using std::type_index;
 using std::set;
@@ -19,16 +20,18 @@ namespace frame {
     private:
         set<Entity*> entities;
         set<Node*> nodes;
+        set<System*> systems;
+        bool running;
 
     public:
-        Frame() {}
+        Frame() : running(true) {}
         ~Frame() {
             clear_entities();
             clear_nodes();
+            clear_systems();
         }
 
     public:
-
         Entity* add_entity() {
             Entity* e = new Entity(this);
             entities.insert(e);
@@ -63,6 +66,13 @@ namespace frame {
             return n;
         }
 
+        template <typename T>
+        T* add_system() {
+            T* s = new System(this);
+            systems.insert(s);
+            return s;
+        }
+
         void clear_entities() {
             while (entities.size())
                 remove_entity(*entities.begin());
@@ -73,7 +83,14 @@ namespace frame {
                 remove_node(*nodes.begin());
         }
 
+        void clear_systems() {
+            while (systems.size())
+                remove_system(*systems.begin());
+        }
+
         virtual void remove_entity(Entity* e) {
+            for (auto c: e->components)
+                delete c;
             for (auto n : e->nodes)
                 unravel(n, e);
             entities.erase(e);
@@ -87,6 +104,11 @@ namespace frame {
             delete n;
         }
 
+        virtual void remove_system(System* s) {
+            systems.erase(s);
+            delete s;
+        }
+
         virtual void add_component_to_entity(Entity* e, Component* c) {
             auto c_type = type_index(typeid(*c));
             c->entity = e;
@@ -95,13 +117,21 @@ namespace frame {
             ravel(e);
         }
 
+        virtual void remove_component_from_entity(Entity* e, Component* c) {
+            auto c_type = type_index(typeid(*c));
+            e->components.erase(c_type);
+            e->mask &= !c->mask;
+            unravel(e);
+            delete c;
+        }
+
         virtual void add_components_to_node(Node* n, unsigned int mask) {
             n->mask |= mask;
             unravel(n);
         }
 
         virtual void remove_components_from_node(Node* n, unsigned int mask) {
-            n->mask &= (!mask);
+            n->mask &= !mask;
             ravel(n);
         }
 
@@ -137,6 +167,21 @@ namespace frame {
         void unravel(Node* n, Entity* e) {
             n->entities.erase(e);
             e->nodes.erase(n);
+        }
+
+    public:
+        virtual void run() {
+            for (auto s : systems) s->start();
+            while (running) {
+                for (auto s : systems) s->step_begin();
+                for (auto s : systems) s->step();
+                for (auto s : systems) s->step_end();
+            }
+            for (auto s : systems)s->stop();
+        }
+
+        virtual void stop() {
+            running = false;
         }
     };
 }

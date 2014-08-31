@@ -5,8 +5,8 @@
 #include <typeindex>
 #include <set>
 #include <map>
-#include "Component.hpp"
-#include "Node.hpp"
+#include "frame/Component.hpp"
+#include "frame/Node.hpp"
 #include "frame/FrameInterface.h"
 using std::set;
 using std::map;
@@ -27,7 +27,6 @@ namespace frame {
         ~Entity() {}
 
     public:
-
         void remove() {
             f->remove_entity(this);
         }
@@ -36,10 +35,17 @@ namespace frame {
         T* add_component() {
             return add_component<T>(new T());
         }
+
         template <typename T>
         T* add_component(T* c) {
             f->add_component_to_entity(this, c);
             return c;
+        }
+
+        template <typename T>
+        void remove_component() {
+            auto c = get_component<T>();
+            f->remove_component_from_entity(c);
         }
 
 
