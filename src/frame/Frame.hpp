@@ -90,7 +90,7 @@ namespace frame {
 
         virtual void remove_entity(Entity* e) {
             for (auto c: e->components)
-                delete c;
+                delete c.second;
             for (auto n : e->nodes)
                 unravel(n, e);
             entities.erase(e);
