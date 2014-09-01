@@ -9,33 +9,37 @@
 using std::set;
 
 namespace frame {
+
+    class Frame;
     class Entity;
 
     class Node {
         friend class Frame;
     public:
-        explicit Node(FrameInterface* f) : mask(0), f(f) {}
+        explicit Node(Frame* f) : mask(0), f(f) {}
         virtual ~Node() {}
 
     protected:
         unsigned int mask;
         set<Entity*> entities;
-        FrameInterface* f;
+        Frame* f;
 
     public:
+        Frame* get_frame() { return f; }
+
         void remove() {
-            f->remove_node(this);
+            ((FrameInterface*)f)->remove_node(this);
         }
 
         template <typename T>
         Node* add_component() {
-            f->add_components_to_node(this, T().mask);
+            ((FrameInterface*)f)->add_components_to_node(this, T().mask);
             return this;
         }
 
         template <typename T>
         Node* remove_component() {
-            f->remove_components_from_node(this, T().mask);
+            ((FrameInterface*)f)->remove_components_from_node(this, T().mask);
             return this;
         }
 

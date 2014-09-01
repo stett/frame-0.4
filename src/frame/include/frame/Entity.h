@@ -13,6 +13,9 @@ using std::map;
 using std::type_index;
 
 namespace frame {
+
+    class Frame;
+
     class Entity {
         friend class Frame;
 
@@ -20,15 +23,17 @@ namespace frame {
         unsigned int mask;
         map<type_index, Component*> components;
         set<Node*> nodes;
-        FrameInterface* f;
+        Frame* f;
 
     public:
-        explicit Entity(FrameInterface* f) : mask(0), f(f) {}
+        explicit Entity(Frame* f) : mask(0), f(f) {}
         ~Entity() {}
 
     public:
+        Frame* get_frame() { return f; }
+
         void remove() {
-            f->remove_entity(this);
+            ((FrameInterface*)f)->remove_entity(this);
         }
 
         template <typename T>
@@ -38,16 +43,15 @@ namespace frame {
 
         template <typename T>
         T* add_component(T* c) {
-            f->add_component_to_entity(this, c);
+            ((FrameInterface*)f)->add_component_to_entity(this, c);
             return c;
         }
 
         template <typename T>
         void remove_component() {
             auto c = get_component<T>();
-            f->remove_component_from_entity(c);
+            ((FrameInterface*)f)->remove_component_from_entity(c);
         }
-
 
         template <typename T>
         T* get_component() {
