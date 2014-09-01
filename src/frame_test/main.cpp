@@ -1,8 +1,8 @@
 // Copyright [2014] By Stett ...
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
-//#include "tests/test_frame.h"
-//#include "tests/test_core.h"
+#include "tests/test_frame.h"
+#include "tests/test_core.h"
 #include "tests/test_system.h"
 #include "gtest/gtest.h"
 
