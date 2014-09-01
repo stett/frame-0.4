@@ -2,11 +2,13 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
+#include <string>
 #include <set>
 #include "frame/Entity.h"
 #include "frame/Node.h"
 #include "frame/System.h"
 #include "frame/interface/FrameInterface.h"
+using std::string;
 using std::set;
 
 
@@ -84,5 +86,7 @@ namespace frame {
         virtual void run();
         virtual void step();
         virtual void stop();
+        virtual void save(string tag);
+        virtual void load(string tag);
     };
 }

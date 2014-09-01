@@ -2,6 +2,8 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
+#include <string>
+using std::string;
 
 
 namespace frame {
@@ -19,6 +21,8 @@ namespace frame {
         virtual void run() = 0;
         virtual void step() = 0;
         virtual void stop() = 0;
+        virtual void save(string tag) = 0;
+        virtual void load(string tag) = 0;
 
         // Entity interface
         virtual void remove_entity(Entity* e) = 0;

@@ -5,6 +5,7 @@
 #include <typeindex>
 #include <cstdio>
 #include <typeinfo>
+#include <string>
 #include <set>
 #include "frame/Frame.h"
 #include "frame/interface/FrameInterface.h"
@@ -12,6 +13,7 @@
 #include "frame/Node.h"
 #include "frame/System.h"
 using std::type_index;
+using std::string;
 using std::set;
 using frame::Frame;
 using frame::FrameInterface;
@@ -172,3 +174,6 @@ void Frame::step() {
 void Frame::stop() {
     running = false;
 }
+
+void Frame::save(string tag) {}
+void Frame::load(string tag) {}
