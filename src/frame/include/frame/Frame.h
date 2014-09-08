@@ -15,6 +15,7 @@ using std::set;
 namespace frame {
 
     class Frame : public FrameInterface {
+
     private:
         set<Entity*> entities;
         set<Node*> nodes;
@@ -52,7 +53,7 @@ namespace frame {
         Node* add_node() {
             Node* n = new Node(this);
             nodes.insert(n);
-            [](...) {} ((n->mask |= T().mask)...);
+            [](...) {} ((n->mask |= T().mask())...);
             ravel(n);
             return n;
         }

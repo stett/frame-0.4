@@ -8,7 +8,7 @@ using std::string;
 
 class Name : public frame::Component {
  public:
-    Name() : str("name") { mask = 1 << 2; }
+    Name() : str("name") {}// mask = 1 << 2; }
     virtual ~Name() {}
     string str;
 };

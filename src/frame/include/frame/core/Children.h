@@ -8,18 +8,16 @@ using std::set;
 
 namespace frame {
     class Entity;
+
     class Children : public Component {
         friend class FamilyInterface;
         friend class Parent;
-        
+
     protected:
         set<Entity*> child_list;
 
     public:
-        Children() { mask = 1; }
-        /*
-        explicit Children(...);
-        */
+        Children() {}// mask = 1; }
         ~Children() { clear(); }
 
     public:

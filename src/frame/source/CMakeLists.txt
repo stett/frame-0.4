@@ -1,4 +1,4 @@
 include_directories(${Frame_SOURCE_DIR}/include
                     ${Frame_SOURCE_DIR})
 
-add_library(Frame Frame.cpp Children.cpp Parent.cpp)
+add_library(Frame SHARED Frame.cpp Component.cpp Children.cpp Parent.cpp)

@@ -9,10 +9,7 @@ using frame::Parent;
 using frame::Children;
 
 
-/*
-void Children::Children(...) {
-}
-*/
+REGISTER_FRAME_COMPONENT(Children);
 
 Children* Children::add(Entity* e_child) {
 
