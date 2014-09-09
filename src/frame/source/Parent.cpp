@@ -7,6 +7,9 @@
 using frame::Parent;
 using frame::Children;
 
+
+REGISTER_FRAME_COMPONENT(Parent);
+
 Parent* Parent::set(Entity* e) {
 
     // If we had a previous parent, remove ourself

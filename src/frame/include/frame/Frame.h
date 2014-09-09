@@ -2,17 +2,20 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
+#include <string>
 #include <set>
 #include "frame/Entity.h"
 #include "frame/Node.h"
 #include "frame/System.h"
 #include "frame/interface/FrameInterface.h"
+using std::string;
 using std::set;
 
 
 namespace frame {
 
     class Frame : public FrameInterface {
+
     private:
         set<Entity*> entities;
         set<Node*> nodes;
@@ -50,7 +53,7 @@ namespace frame {
         Node* add_node() {
             Node* n = new Node(this);
             nodes.insert(n);
-            [](...) {} ((n->mask |= T().mask)...);
+            [](...) {} ((n->mask |= T().mask())...);
             ravel(n);
             return n;
         }
@@ -84,5 +87,7 @@ namespace frame {
         virtual void run();
         virtual void step();
         virtual void stop();
+        virtual void save(string tag);
+        virtual void load(string tag);
     };
 }

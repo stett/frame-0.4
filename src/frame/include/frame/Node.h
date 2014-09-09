@@ -33,13 +33,13 @@ namespace frame {
 
         template <typename T>
         Node* add_component() {
-            ((FrameInterface*)f)->add_components_to_node(this, T().mask);
+            ((FrameInterface*)f)->add_components_to_node(this, T().mask());
             return this;
         }
 
         template <typename T>
         Node* remove_component() {
-            ((FrameInterface*)f)->remove_components_from_node(this, T().mask);
+            ((FrameInterface*)f)->remove_components_from_node(this, T().mask());
             return this;
         }
 

@@ -19,10 +19,6 @@
 		},
 		{
 			"follow_symlinks": true,
-			"path": "/home/stett/projects/frame/0.4/frame/ext"
-		},
-		{
-			"follow_symlinks": true,
 			"path": "/home/stett/projects/frame/0.4/frame/build"
 		},
 		{

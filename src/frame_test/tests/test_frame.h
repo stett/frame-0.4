@@ -20,7 +20,7 @@ namespace {
     protected:
         Frame f;
     };
-    
+
     TEST_F(FrameTest, TestAddEntity) {
 
         // Create a node which doesn't filter anything and an entity
@@ -40,6 +40,18 @@ namespace {
         auto c = e->add_component<Position>();
         EXPECT_EQ(c->get_entity(), e) << "Component entity pointer should be set to the entity we just added it to";
         EXPECT_EQ(e->get_component<Position>(), c) << "Entity's component list should contain the component we just added";
+    }
+
+    TEST_F(FrameTest, TestComponentMasks) {
+        auto e_0 = f.add_entity();
+        auto e_1 = f.add_entity();
+        auto c_pos_0 = e_0->add_component<Position>();
+        auto c_pos_1 = e_1->add_component<Position>();
+        auto c_name_0 = e_0->add_component<Name>();
+        auto c_name_1 = e_1->add_component<Name>();
+        EXPECT_EQ(c_pos_0->mask(), c_pos_1->mask());
+        EXPECT_EQ(c_name_0->mask(), c_name_1->mask());
+        EXPECT_NE(c_pos_0->mask(), c_name_0->mask());
     }
 
     TEST_F(FrameTest, TestNodeLists) {

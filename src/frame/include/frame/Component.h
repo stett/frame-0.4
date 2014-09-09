@@ -5,7 +5,12 @@
 #include <typeindex>
 #include <typeinfo>
 #include <map>
+#include <functional>
+#include <cstdio>
+using std::type_index;
 using std::map;
+using std::pair;
+using std::function;
 
 
 namespace frame {
@@ -16,17 +21,31 @@ namespace frame {
         friend class Frame;
         friend class Node;
 
+    public:
+        static unsigned int _mask;
+        static map<type_index, function<Component*()>> component_factories;
+        static map<type_index, unsigned int> component_masks;
+        static function<Component*()> register_component(function<Component*()> factory);
+        static Component* make_component(type_index type);
     protected:
-        unsigned int mask;
         Entity* entity;
 
+
     public:
-        Component() : mask(0), entity(0) {}
+        Component() : entity(0) {}
         virtual ~Component() {}
 
     public:
-        const Entity* get_entity() const {
-            return entity;
-        }
+        const Entity* get_entity() const { return entity; }
+        unsigned int mask() const;
     };
 }
+
+
+#define CONCATENATE0(a, b) a ## b
+#define CONCATENATE(a, b) CONCATENATE0(a, b)
+#define REGISTER_FRAME_COMPONENT(COMPONENT_TYPE)                \
+    function<frame::Component*()> COMPONENT_TYPE ## Prototype = \
+    frame::Component::register_component([]() {                 \
+        return new COMPONENT_TYPE();                            \
+    });

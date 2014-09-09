@@ -8,7 +8,7 @@ include_directories(${gtest_SOURCE_DIR}/include
                     ${gtest_SOURCE_DIR})
 
 # Define the executable test program
-add_executable(FrameTest main.cpp)
+add_executable(FrameTest main.cpp components.cpp)
 
 # Link everything to the FrameTest executable
 target_link_libraries(FrameTest Frame gtest gtest_main)

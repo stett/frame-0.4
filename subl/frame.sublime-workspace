@@ -8,9 +8,13 @@
 	"build_system": "Debug",
 	"command_palette":
 	{
-		"height": 417.0,
+		"height": 174.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				":w",
 				":w - Save"
@@ -25,10 +29,6 @@
 			],
 			[
 				"inst	",
-				"Package Control: Install Package"
-			],
-			[
-				"install",
 				"Package Control: Install Package"
 			],
 			[
@@ -80,7 +80,7 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 611.0
+		"width": 610.0
 	},
 	"console":
 	{
@@ -102,21 +102,62 @@
 	},
 	"file_history":
 	[
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/components.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Velocity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Children.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/components.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Parent.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Children.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/interface/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/FrameSerializer.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization.h",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_help_test.py",
+		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/ComponentData.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-options_test.cc",
+		"/home/stett/projects/frame/0.4/frame/build/Makefile",
+		"/home/stett/projects/frame/0.4/frame/build/frame_test/FrameTest",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-death-test_ex_test.cc",
+		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/TargetDirectories.txt",
+		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/progress.marks",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CHANGES",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/components/Name.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/comps/Name.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/components/Position.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/comps/Position.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/macros/component_mask_macro.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Children.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/interfaces/FrameInterface.h",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/FamilyInterface.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_base.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/Parent.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/Parent.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/main.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_core.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_frame.h",
@@ -139,18 +180,13 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/cmake/internal_utils.cmake",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/build-aux/install-sh",
-		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/xcode/Samples/FrameworkSample/widget_test.cc",
 		"/home/stett/projects/frame/0.4/frame/build/frame-test/cmake_install.cmake",
 		"/home/stett/projects/frame/0.4/frame/README.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/querymap.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_signals.h",
-		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-death-test_ex_test.cc",
-		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/TargetDirectories.txt",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-workspace",
-		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
 		"/home/stett/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/CHANGES",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Parent.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Children.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/components/position.hpp",
@@ -193,43 +229,7 @@
 		"/home/stett/projects/loantrac/loans/exports.py",
 		"/home/stett/projects/loantrac/referralreports/referrer_organization_report.py",
 		"/home/stett/projects/loantrac/loans/urls.py",
-		"/home/stett/projects/loantrac/loans/tests/test_application_grading.py",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/django/contrib/admindocs/tests/test_fields.py",
-		"/home/stett/projects/loantrac/loantrac/sites.py",
-		"/home/stett/projects/loantrac/loantrac/settings.py",
-		"/home/stett/projects/loantrac/loantrac.sqlite",
-		"/home/stett/projects/loantrac/loans/tests/data/loans-2014-08-22.csv",
-		"/home/stett/projects/loantrac/loans/tests/data/scout-and-zoes-loan-amortization-table.csv",
-		"/home/stett/projects/loantrac/loans/tests/data/scout-and-zoes-loan-payments-2014-08-22.csv",
-		"/home/stett/projects/loantrac/templates/templated_email/referrer_report.email",
-		"/home/stett/projects/loantrac/referralreports/referrer_report.py",
-		"/home/stett/projects/loantrac/accounts/templates/accounts/registration_form.html",
-		"/home/stett/projects/loantrac/requirements.txt",
-		"/home/stett/projects/loantrac/tasks/tests/test_views.py",
-		"/home/stett/projects/loantrac/tasks/tests/test_models.py",
-		"/home/stett/projects/loantrac/tasks/tests/__init__.py",
-		"/home/stett/projects/loantrac/tasks/templates/task-list.html",
-		"/home/stett/projects/loantrac/tasks/urls.py",
-		"/home/stett/projects/loantrac/htmlcov/modules/loanapplications.utils.html",
-		"/home/stett/projects/loantrac/htmlcov/modules/loanapplications.queries.html",
-		"/home/stett/projects/loantrac/htmlcov/modules/loanapplications.views.html",
-		"/home/stett/projects/loantrac/htmlcov/modules/loanapplications.grade_application.html",
-		"/home/stett/projects/loantrac/loans/templates/loans/loanapplication_list.html",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/pylint/test/regrtest_data/application_crash.py",
-		"/home/stett/projects/loantrac/htmlcov/modules/loanapplications.forms.html",
-		"/home/stett/projects/loantrac/htmlcov/modules/loans.referrer_organization_report.html",
-		"/etc/solarized/xresources/solarized",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/wrapper/resume.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/wrapper/user_entity.py",
-		"/home/stett/projects/loantrac/reports/custom_reports.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/signals.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/models.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/forms.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/settings.py",
-		"/home/stett/test-resume.html",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/backends/resume_parsers.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/serializers.py",
-		"/home/stett/projects/brooksource-website/bullhorn_wrapper/views.py"
+		"/home/stett/projects/loantrac/loans/tests/test_application_grading.py"
 	],
 	"find":
 	{
@@ -250,6 +250,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"->mask",
+			"add_library",
+			"map",
+			"ComponentData",
+			"type_index",
+			"                    ${",
 			"delete",
 			"nodes",
 			"entities",
@@ -333,7 +339,7 @@
 	},
 	"input":
 	{
-		"height": 32.0
+		"height": 33.0
 	},
 	"layout":
 	{
@@ -377,16 +383,72 @@
 		"selected_items":
 		[
 			[
-				"entit",
-				"src/frame/Entity.hpp"
+				"position",
+				"src/frame_test/tests/components/Position.h"
+			],
+			[
+				"posi",
+				"src/frame_test/tests/components/Position.h"
+			],
+			[
+				"frame",
+				"src/frame/include/frame/Frame.h"
+			],
+			[
+				"veloci",
+				"src/frame_test/tests/components/Velocity.h"
 			],
 			[
 				"compon",
-				"src/frame/Component.hpp"
+				"src/frame/include/frame/Component.h"
 			],
 			[
 				"fram",
-				"src/frame/Frame.hpp"
+				"src/frame/include/frame/Frame.h"
+			],
+			[
+				"physics",
+				"src/frame_test/tests/systems/Physics.h"
+			],
+			[
+				"phys",
+				"src/frame_test/tests/systems/Physics.h"
+			],
+			[
+				"main",
+				"src/frame_test/main.cpp"
+			],
+			[
+				"physi",
+				"src/frame_test/tests/systems/Physics.h"
+			],
+			[
+				"frame.h",
+				"src/frame/include/frame/Frame.h"
+			],
+			[
+				"test_core",
+				"src/frame_test/tests/test_core.h"
+			],
+			[
+				"parent.",
+				"src/frame/source/Parent.cpp"
+			],
+			[
+				"children.h",
+				"src/frame/include/frame/core/Children.h"
+			],
+			[
+				"entity",
+				"src/frame/include/frame/Entity.h"
+			],
+			[
+				"name.h",
+				"src/frame_test/tests/components/Name.h"
+			],
+			[
+				"entit",
+				"src/frame/Entity.hpp"
 			],
 			[
 				"interface",
@@ -417,19 +479,11 @@
 				"src/frame-test/tests/test_frame.h"
 			],
 			[
-				"frame",
-				"src/frame/Frame.hpp"
-			],
-			[
 				"enti",
 				"src/frame/Entity.hpp"
 			],
 			[
 				"en",
-				"src/frame/Entity.hpp"
-			],
-			[
-				"entity",
 				"src/frame/Entity.hpp"
 			],
 			[
@@ -854,7 +908,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 338.0,
+	"side_bar_width": 245.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

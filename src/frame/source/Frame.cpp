@@ -5,13 +5,15 @@
 #include <typeindex>
 #include <cstdio>
 #include <typeinfo>
+#include <string>
 #include <set>
 #include "frame/Frame.h"
-#include "frame/interface/FrameInterface.h"
 #include "frame/Entity.h"
 #include "frame/Node.h"
 #include "frame/System.h"
+#include "frame/interface/FrameInterface.h"
 using std::type_index;
+using std::string;
 using std::set;
 using frame::Frame;
 using frame::FrameInterface;
@@ -117,7 +119,7 @@ void Frame::add_component_to_entity(Entity* e, Component* c) {
     if (c_it != e->components.end())
         remove_component_from_entity(e, c_it->second);
     e->components[c_type] = c;
-    e->mask |= c->mask;
+    e->mask |= c->mask();
     c->entity = e;
     ravel(e);
 }
@@ -125,7 +127,7 @@ void Frame::add_component_to_entity(Entity* e, Component* c) {
 void Frame::remove_component_from_entity(Entity* e, Component* c) {
     auto c_type = type_index(typeid(*c));
     e->components.erase(c_type);
-    e->mask &= !c->mask;
+    e->mask &= !c->mask();
     unravel(e);
     delete c;
 }
@@ -172,3 +174,7 @@ void Frame::step() {
 void Frame::stop() {
     running = false;
 }
+
+void Frame::save(string tag) {}
+
+void Frame::load(string tag) {}
