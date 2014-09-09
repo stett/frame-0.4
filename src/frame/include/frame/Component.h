@@ -42,6 +42,8 @@ namespace frame {
 }
 
 
+#define CONCATENATE0(a, b) a ## b
+#define CONCATENATE(a, b) CONCATENATE0(a, b)
 #define REGISTER_FRAME_COMPONENT(COMPONENT_TYPE)                \
     function<frame::Component*()> COMPONENT_TYPE ## Prototype = \
     frame::Component::register_component([]() {                 \

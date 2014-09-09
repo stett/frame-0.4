@@ -3,6 +3,7 @@
 
 #include "tests/test_frame.h"
 #include "tests/test_core.h"
+#include "tests/test_component.h"
 #include "tests/test_system.h"
 #include "gtest/gtest.h"
 

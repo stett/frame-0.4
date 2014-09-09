@@ -5,7 +5,6 @@
 #include <typeinfo>
 #include <map>
 #include <functional>
-#include <cstdio>
 #include "frame/Component.h"
 using std::type_index;
 using std::map;
@@ -25,7 +24,6 @@ function<Component*()> Component::register_component(function<Component*()> fact
     map<type_index, unsigned int> test;
     test[type] = _mask;
     _mask = _mask << 1;
-    printf("Registering component: %s (%u)\n", typeid(*c).name(), component_masks[type]);
     delete c;
     return factory;
 }
@@ -41,22 +39,3 @@ unsigned int Component::mask() const {
     auto type = type_index(typeid(*this));
     return component_masks[type];
 }
-
-/*Component::Component() : entity(0) {
-    mask = component_masks[type_index(typeid(*this))];
-    std::printf("Instantiating new %s\n", typeid(*this).name());
-}*/
-
-//frame::Component* frame::test;
-
-/*
-ComponentData* Component::save(FrameSerializer* s) const {
-    ComponentData d = new ComponentData();
-    d->entity = s->get_entity_id_from_ptr(entity);
-    return d;
-}
-
-void Component::load(const ComponentData& data, FrameSerializer* s) const {
-    entity = s->get_entity_ptr_from_id(data.entity);
-}
-*/

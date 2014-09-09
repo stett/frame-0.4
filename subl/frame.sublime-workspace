@@ -102,37 +102,41 @@
 	},
 	"file_history":
 	[
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/components.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Velocity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Children.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/components.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Parent.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Children.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/interface/FrameInterface.h",
+		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/FrameSerializer.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization.h",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_help_test.py",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/interface/FrameInterface.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Children.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/ComponentData.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/FrameSerializer.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Velocity.h",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-options_test.cc",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/build/Makefile",
 		"/home/stett/projects/frame/0.4/frame/build/frame_test/FrameTest",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Parent.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Children.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-death-test_ex_test.cc",
 		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/TargetDirectories.txt",
 		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/progress.marks",
@@ -176,7 +180,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/core/Children.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/cmake/internal_utils.cmake",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/build-aux/install-sh",
-		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/xcode/Samples/FrameworkSample/widget_test.cc",
 		"/home/stett/projects/frame/0.4/frame/build/frame-test/cmake_install.cmake",
 		"/home/stett/projects/frame/0.4/frame/README.txt",
@@ -226,10 +229,7 @@
 		"/home/stett/projects/loantrac/loans/exports.py",
 		"/home/stett/projects/loantrac/referralreports/referrer_organization_report.py",
 		"/home/stett/projects/loantrac/loans/urls.py",
-		"/home/stett/projects/loantrac/loans/tests/test_application_grading.py",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/django/contrib/admindocs/tests/test_fields.py",
-		"/home/stett/projects/loantrac/loantrac/sites.py",
-		"/home/stett/projects/loantrac/loantrac/settings.py"
+		"/home/stett/projects/loantrac/loans/tests/test_application_grading.py"
 	],
 	"find":
 	{
@@ -250,6 +250,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"->mask",
+			"add_library",
+			"map",
 			"ComponentData",
 			"type_index",
 			"                    ${",
@@ -380,6 +383,26 @@
 		"selected_items":
 		[
 			[
+				"position",
+				"src/frame_test/tests/components/Position.h"
+			],
+			[
+				"posi",
+				"src/frame_test/tests/components/Position.h"
+			],
+			[
+				"frame",
+				"src/frame/include/frame/Frame.h"
+			],
+			[
+				"veloci",
+				"src/frame_test/tests/components/Velocity.h"
+			],
+			[
+				"compon",
+				"src/frame/include/frame/Component.h"
+			],
+			[
 				"fram",
 				"src/frame/include/frame/Frame.h"
 			],
@@ -398,10 +421,6 @@
 			[
 				"physi",
 				"src/frame_test/tests/systems/Physics.h"
-			],
-			[
-				"frame",
-				"src/frame/include/frame/Frame.h"
 			],
 			[
 				"frame.h",
@@ -430,10 +449,6 @@
 			[
 				"entit",
 				"src/frame/Entity.hpp"
-			],
-			[
-				"compon",
-				"src/frame/Component.hpp"
 			],
 			[
 				"interface",
@@ -893,7 +908,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 338.0,
+	"side_bar_width": 245.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
