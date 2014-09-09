@@ -2,14 +2,15 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 
-#include <ofstream>
-#include <ifstream>
+#include <fstream>
 #include <typeindex>
 #include <typeinfo>
 #include <cstdio>
 #include <string>
+#include <vector>
 #include <set>
 #include <map>
+#include <utility>
 #include "frame/Frame.h"
 #include "frame/Entity.h"
 #include "frame/Component.h"
@@ -18,8 +19,10 @@
 #include "frame/interface/FrameInterface.h"
 using std::type_index;
 using std::string;
+using std::vector;
 using std::set;
 using std::map;
+using std::pair;
 using frame::Frame;
 using frame::FrameInterface;
 using frame::Entity;
@@ -188,10 +191,10 @@ void Frame::save(string tag) {
 
     // Open the file for reading
     std::ofstream os;
-    os.open("data.bin", std::ios::out | std::ios::bin);
+    os.open(tag, std::ios::out);// | std::ios::binary);
 
     // Output the number of entities
-    os << (unsigned int)entities.size();
+    os << (unsigned int)entities.size() << std::endl;
 
     // Loop through all entities, generating an entity id for each one,
     // and outputing all of its components
@@ -200,35 +203,39 @@ void Frame::save(string tag) {
     for (Entity* e : entities) {
 
         // Add this entity to the pointer map
-        entity_map[e] = eid ++;
+        entity_map[e] = eid++;
 
         // Output the number of components for this component
-        os << (unsigned int)e->components.size();
+        os << (unsigned int)e->components.size() << std::endl;
 
         // Loop over the components
         for (pair<type_index, Component*> it : e->components) {
 
             // Output this component's type
-            os << it.first;
+            type_index type = it.first;
+            string c_name = Component::component_names[type];
+            os << c_name << std::endl;
 
             // Output this component's data
-            it.second->save(os);
+            Component* c = it.second;
+            c->save(&os);
         }
     }
 
     // Close the file
-    os.close()
+    os.close();
 }
 
 void Frame::load(string tag) {
 
     // Open the file
     std::ifstream is;
-    is.open("data.bin", std::ios::in | std::ios::bin);
+    is.open(tag, std::ios::in);// | std::ios::binary);
 
     // Get the number of entities
     unsigned int num_entities;
     is >> num_entities;
+    printf("Loading num entities: %u\n", num_entities);
 
     // Create an entity for each entry
     vector<Entity*> entity_map;
@@ -244,15 +251,16 @@ void Frame::load(string tag) {
         for (unsigned int cid = 0; cid < num_components; cid ++) {
 
             // Get the type of this component
-            type_index c_type;
-            is >> c_type;
+            string c_name;
+            is >> c_name;
 
             // Create a new instance of this component
-            auto factory = Component::component_factories[c_type];
+            //auto factory = Component::component_factories[c_type];
+            auto factory = Component::component_factories[c_name];
             Component* c = factory();
 
             // Load the next block of data into the component
-            c->load(is);
+            c->load(&is);
 
             // Add the component to the entity
             add_component_to_entity(e, c);

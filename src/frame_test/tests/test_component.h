@@ -20,16 +20,22 @@ namespace {
     };
 
     TEST_F(ComponentTest, TestComponentFactories) {
-
         EXPECT_EQ(frame::Component::component_factories.size(), (unsigned int)5);
+
         auto type = type_index(typeid(Name));
-        auto factory = frame::Component::component_factories[type];
+        auto mask = frame::Component::component_masks[type];
+        auto name = frame::Component::component_names[type];
+        EXPECT_EQ("Name", name);
+
+        auto factory = frame::Component::component_factories[name];
         auto c_0 = factory();
         auto c_1 = new Name();
-
         EXPECT_EQ(sizeof(*static_cast<Name*>(c_0)), sizeof(*c_1));
         EXPECT_EQ(type, type_index(typeid(*c_0)));
-        EXPECT_EQ(c_0->mask(), c_1->mask());
+        EXPECT_EQ(mask, c_0->mask());
+        EXPECT_EQ(mask, c_1->mask());
+        EXPECT_EQ(name, c_0->name());
+        EXPECT_EQ(name, c_1->name());
 
         delete c_0;
         delete c_1;

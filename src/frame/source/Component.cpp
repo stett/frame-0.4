@@ -3,33 +3,42 @@
 
 #include <typeindex>
 #include <typeinfo>
+#include <string>
 #include <map>
 #include <functional>
 #include "frame/Component.h"
 using std::type_index;
+using std::string;
 using std::map;
 using std::function;
 using frame::Component;
 
 
 unsigned int Component::_mask = 1;
-map<type_index, function<Component*()>> Component::component_factories;
+map<string, function<Component*()>> Component::component_factories;
 map<type_index, unsigned int> Component::component_masks;
+map<type_index, string> Component::component_names;
+//map<string, type_index> Component::component_types;
 
-function<Component*()> Component::register_component(function<Component*()> factory) {
-    Component* c = factory();
-    auto type = type_index(typeid(*c));
-    component_factories[type] = factory;
+function<Component*()> Component::register_component(string name, type_index type, function<Component*()> factory) {
+    component_factories[name] = factory;
     component_masks[type] = _mask;
-    map<type_index, unsigned int> test;
-    test[type] = _mask;
+    component_names[type] = name;
+    //component_types[name] = type;
     _mask = _mask << 1;
-    delete c;
     return factory;
 }
 
+/*
 Component* Component::make_component(type_index type) {
     auto it = component_factories.find(type);
+    if (it == component_factories.end()) return 0;
+    function<Component*()> factory = it->second;
+    return factory();
+}
+*/
+Component* Component::make_component(string name) {
+    auto it = component_factories.find(name);
     if (it == component_factories.end()) return 0;
     function<Component*()> factory = it->second;
     return factory();
@@ -38,4 +47,9 @@ Component* Component::make_component(type_index type) {
 unsigned int Component::mask() const {
     auto type = type_index(typeid(*this));
     return component_masks[type];
+}
+
+string Component::name() const {
+    auto type = type_index(typeid(*this));
+    return component_names[type];
 }
