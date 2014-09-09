@@ -2,19 +2,24 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 
+#include <ofstream>
+#include <ifstream>
 #include <typeindex>
-#include <cstdio>
 #include <typeinfo>
+#include <cstdio>
 #include <string>
 #include <set>
+#include <map>
 #include "frame/Frame.h"
 #include "frame/Entity.h"
+#include "frame/Component.h"
 #include "frame/Node.h"
 #include "frame/System.h"
 #include "frame/interface/FrameInterface.h"
 using std::type_index;
 using std::string;
 using std::set;
+using std::map;
 using frame::Frame;
 using frame::FrameInterface;
 using frame::Entity;
@@ -175,6 +180,85 @@ void Frame::stop() {
     running = false;
 }
 
-void Frame::save(string tag) {}
+/*
+ * Serialization / deserialization
+ */
 
-void Frame::load(string tag) {}
+void Frame::save(string tag) {
+
+    // Open the file for reading
+    std::ofstream os;
+    os.open("data.bin", std::ios::out | std::ios::bin);
+
+    // Output the number of entities
+    os << (unsigned int)entities.size();
+
+    // Loop through all entities, generating an entity id for each one,
+    // and outputing all of its components
+    int eid = 0;
+    map<Entity*, unsigned int> entity_map;
+    for (Entity* e : entities) {
+
+        // Add this entity to the pointer map
+        entity_map[e] = eid ++;
+
+        // Output the number of components for this component
+        os << (unsigned int)e->components.size();
+
+        // Loop over the components
+        for (pair<type_index, Component*> it : e->components) {
+
+            // Output this component's type
+            os << it.first;
+
+            // Output this component's data
+            it.second->save(os);
+        }
+    }
+
+    // Close the file
+    os.close()
+}
+
+void Frame::load(string tag) {
+
+    // Open the file
+    std::ifstream is;
+    is.open("data.bin", std::ios::in | std::ios::bin);
+
+    // Get the number of entities
+    unsigned int num_entities;
+    is >> num_entities;
+
+    // Create an entity for each entry
+    vector<Entity*> entity_map;
+    for (unsigned int eid = 0; eid < num_entities; eid ++) {
+        Entity* e = add_entity();
+        entity_map.push_back(e);
+
+        // Get the number of components in this entity
+        unsigned int num_components;
+        is >> num_components;
+
+        // Create a component for each entry
+        for (unsigned int cid = 0; cid < num_components; cid ++) {
+
+            // Get the type of this component
+            type_index c_type;
+            is >> c_type;
+
+            // Create a new instance of this component
+            auto factory = Component::component_factories[c_type];
+            Component* c = factory();
+
+            // Load the next block of data into the component
+            c->load(is);
+
+            // Add the component to the entity
+            add_component_to_entity(e, c);
+        }
+    }
+
+    // Close the file
+    is.close();
+}

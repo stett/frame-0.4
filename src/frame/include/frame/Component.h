@@ -2,6 +2,8 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
+#include <ofstream>
+#include <ifstream>
 #include <typeindex>
 #include <typeinfo>
 #include <map>
@@ -11,6 +13,7 @@ using std::type_index;
 using std::map;
 using std::pair;
 using std::function;
+
 
 
 namespace frame {
@@ -38,6 +41,10 @@ namespace frame {
     public:
         const Entity* get_entity() const { return entity; }
         unsigned int mask() const;
+
+    protected:
+        virtual void save(std::ofstream& os) {}
+        virtual void load(std::ifstream& is) {}
     };
 }
 
