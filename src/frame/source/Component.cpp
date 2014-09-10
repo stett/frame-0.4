@@ -18,25 +18,15 @@ unsigned int Component::_mask = 1;
 map<string, function<Component*()>> Component::component_factories;
 map<type_index, unsigned int> Component::component_masks;
 map<type_index, string> Component::component_names;
-//map<string, type_index> Component::component_types;
 
 function<Component*()> Component::register_component(string name, type_index type, function<Component*()> factory) {
     component_factories[name] = factory;
     component_masks[type] = _mask;
     component_names[type] = name;
-    //component_types[name] = type;
     _mask = _mask << 1;
     return factory;
 }
 
-/*
-Component* Component::make_component(type_index type) {
-    auto it = component_factories.find(type);
-    if (it == component_factories.end()) return 0;
-    function<Component*()> factory = it->second;
-    return factory();
-}
-*/
 Component* Component::make_component(string name) {
     auto it = component_factories.find(name);
     if (it == component_factories.end()) return 0;

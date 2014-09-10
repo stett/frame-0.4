@@ -194,7 +194,8 @@ void Frame::save(string tag) {
     os.open(tag, std::ios::out);// | std::ios::binary);
 
     // Output the number of entities
-    os << (unsigned int)entities.size() << std::endl;
+    unsigned int num_entities = entities.size();
+    os.write((char*)&num_entities, sizeof(unsigned int));
 
     // Loop through all entities, generating an entity id for each one,
     // and outputing all of its components
@@ -206,7 +207,8 @@ void Frame::save(string tag) {
         entity_map[e] = eid++;
 
         // Output the number of components for this component
-        os << (unsigned int)e->components.size() << std::endl;
+        unsigned int num_components = e->components.size();
+        os.write((char*)&num_components, sizeof(unsigned int));
 
         // Loop over the components
         for (pair<type_index, Component*> it : e->components) {
@@ -214,7 +216,7 @@ void Frame::save(string tag) {
             // Output this component's type
             type_index type = it.first;
             string c_name = Component::component_names[type];
-            os << c_name << std::endl;
+            os.write(c_name.c_str(), sizeof(char) * (c_name.size()+1));
 
             // Output this component's data
             Component* c = it.second;
@@ -234,8 +236,7 @@ void Frame::load(string tag) {
 
     // Get the number of entities
     unsigned int num_entities;
-    is >> num_entities;
-    printf("Loading num entities: %u\n", num_entities);
+    is.read((char*)&num_entities, sizeof(unsigned int));
 
     // Create an entity for each entry
     vector<Entity*> entity_map;
@@ -245,14 +246,19 @@ void Frame::load(string tag) {
 
         // Get the number of components in this entity
         unsigned int num_components;
-        is >> num_components;
+        is.read((char*)&num_components, sizeof(unsigned int));
 
         // Create a component for each entry
         for (unsigned int cid = 0; cid < num_components; cid ++) {
 
             // Get the type of this component
             string c_name;
-            is >> c_name;
+            char c_name_char = ' ';
+            while (true) {
+                is.read(&c_name_char, sizeof(char));
+                if (c_name_char == '\0') break;
+                else c_name += c_name_char;
+            }
 
             // Create a new instance of this component
             //auto factory = Component::component_factories[c_type];

@@ -17,12 +17,15 @@ class Name : public frame::Component {
 
  protected:
     void save(std::ofstream* os) {
-        printf("Saving \"Name\": %s\n", str.c_str());
-        *os << str << std::endl;
+        os->write(str.c_str(), sizeof(char) * (str.size() + 1));
     }
 
     void load(std::ifstream* is) {
-        *is >> str;
-        printf("Loading \"Name\": %s\n", str.c_str());
+        char c = ' ';
+        while (true) {
+            is->read(&c, sizeof(char));
+            if (c == '\0') break;
+            else str += c;
+        }
     }
 };
