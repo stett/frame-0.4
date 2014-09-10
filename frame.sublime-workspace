@@ -3,6 +3,10 @@
 	{
 		"selected_items":
 		[
+			[
+				"add_compn",
+				"add_component_to_entity"
+			]
 		]
 	},
 	"build_system": "Debug",
@@ -102,27 +106,34 @@
 	},
 	"file_history":
 	[
+		"/home/stett/projects/frame/0.4/frame/build/gtest-1.7.0/CMakeFiles/gtest_main.dir/DependInfo.cmake",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/msvc/gtest_unittest-md.vcproj",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_no_test_unittest.cc",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/components.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
+		"/home/stett/projects/frame/0.4/frame/.gitignore",
+		"/home/stett/projects/frame/0.4/frame/frame.sublime-project",
+		"/home/stett/projects/frame/0.4/frame/README.md",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_component.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/components.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Velocity.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Children.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/components.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Parent.h",
@@ -163,7 +174,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_core.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_frame.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_base.h",
-		"/home/stett/projects/frame/0.4/frame/.gitignore",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Entity.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/Frame.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame-test/tests/test_core_components.h",
@@ -223,13 +233,7 @@
 		"/home/stett/projects/loantrac/loans/forms.py",
 		"/home/stett/projects/loantrac/loans/fixtures/loans.json",
 		"/home/stett/projects/loantrac/loans/templates/loans/fundingsource_form.html",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/django/contrib/auth/fixtures/authtestdata.json",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/django/contrib/admin/static/admin/js/actions.js",
-		"/home/stett/projects/loantrac/env/lib/python2.7/encodings/johab.py",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/IPython/utils/jsonutil.py",
-		"/home/stett/projects/loantrac/loans/exports.py",
-		"/home/stett/projects/loantrac/referralreports/referrer_organization_report.py",
-		"/home/stett/projects/loantrac/loans/urls.py"
+		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/django/contrib/auth/fixtures/authtestdata.json"
 	],
 	"find":
 	{
@@ -250,6 +254,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"endl",
+			"ofstream",
 			"->mask",
 			"add_library",
 			"map",
@@ -383,6 +389,22 @@
 		"selected_items":
 		[
 			[
+				"read",
+				"README.md"
+			],
+			[
+				"component",
+				"src/frame/source/Component.cpp"
+			],
+			[
+				"compon",
+				"src/frame/include/frame/Component.h"
+			],
+			[
+				"entity",
+				"src/frame/include/frame/Entity.h"
+			],
+			[
 				"position",
 				"src/frame_test/tests/components/Position.h"
 			],
@@ -397,10 +419,6 @@
 			[
 				"veloci",
 				"src/frame_test/tests/components/Velocity.h"
-			],
-			[
-				"compon",
-				"src/frame/include/frame/Component.h"
 			],
 			[
 				"fram",
@@ -437,10 +455,6 @@
 			[
 				"children.h",
 				"src/frame/include/frame/core/Children.h"
-			],
-			[
-				"entity",
-				"src/frame/include/frame/Entity.h"
 			],
 			[
 				"name.h",
