@@ -191,7 +191,7 @@ void Frame::save(string tag) {
 
     // Open the file for reading
     std::ofstream os;
-    os.open(tag, std::ios::out);// | std::ios::binary);
+    os.open(tag, std::ofstream::binary);
 
     // Output the number of entities
     unsigned int num_entities = entities.size();
@@ -232,7 +232,7 @@ void Frame::load(string tag) {
 
     // Open the file
     std::ifstream is;
-    is.open(tag, std::ios::in);// | std::ios::binary);
+    is.open(tag, std::ifstream::binary);
 
     // Get the number of entities
     unsigned int num_entities;
