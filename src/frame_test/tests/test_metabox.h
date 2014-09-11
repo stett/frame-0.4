@@ -15,7 +15,6 @@ namespace {
     };
 
 
-
     TEST_F(MetaBoxTest, TestDoingSuffTheWayIWantToForMetaBox) {
 
         // Set up game

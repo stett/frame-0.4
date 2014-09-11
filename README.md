@@ -79,14 +79,16 @@ Currently, the only way to retrieve components from the system is to create and 
     }
 
 Normally, a node would be a member of a system, but it doesn't need to be.
-A system keeps an internal map of its own nodes, so that they can be removed from Frame when the system is destroyed.
 Here's an example of a system which prints the names of all named entities at startup.
 
     class NameSystem : public frame::System {
         Node* named_entities;
     public:
-        NameSystem(Frame* f) {
-            named_entities = add_node<Name>();
+        NameSystem(Frame* f) : System(f) {
+            named_entities = f->add_node<Name>();
+        }
+        ~NameSystem() {
+            named_entities->remove();
         }
 
     protected:

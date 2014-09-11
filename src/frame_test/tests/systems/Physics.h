@@ -18,7 +18,6 @@ class Physics : public System {
 
  public:
     Physics(Frame* f) : System(f) {
-        //std::printf("Frame: %u\n", f);
         bodies = f->add_node<Position, Velocity>();
     }
     virtual ~Physics() {

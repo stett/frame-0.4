@@ -51,6 +51,8 @@ namespace frame {
 
         template <typename... T>
         Node* add_node() {
+            // TODO: Make the node list a map<bitmask, Node*> so that we can avoid
+            //       duplicate nodes.
             Node* n = new Node(this);
             nodes.insert(n);
             [](...) {} ((n->mask |= T().mask())...);
