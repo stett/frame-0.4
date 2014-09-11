@@ -31,12 +31,15 @@ To create a component, simply create a class that inherits from `frame::Componen
 
     // Create a component
     class Name : public frame::Component {
+        string str;
     public:
         Name() : str("name") {}
         virtual ~Name() {}
-        string str;
         void set(const string& str_) {
             str = str_;
+        }
+        const string& get() const {
+            return str;
         }
     };
 
@@ -62,6 +65,37 @@ The following code sets up a frame with an entity with a basic network of entiti
     auto e1 = f.add_entity();
     e1->add_component<Name>()->set("Entity 1");
     e1->add_component<Parent>()->set(e0);
+
+Currently, the only way to retrieve components from the system is to create and iterate over nodes.
+
+    // Create a node which will return all entities with Name components
+    auto named_entities = f->add_node<Name>();
+
+    // Loop over all named entities
+    for (auto e : *named_entities) {
+
+        // Get the name component of the entity
+        auto name = e->get_component<Name>();
+    }
+
+Normally, a node would be a member of a system, but it doesn't need to be.
+A system keeps an internal map of its own nodes, so that they can be removed from Frame when the system is destroyed.
+Here's an example of a system which prints the names of all named entities at startup.
+
+    class NameSystem : public frame::System {
+        Node* named_entities;
+    public:
+        NameSystem(Frame* f) {
+            named_entities = add_node<Name>();
+        }
+
+    protected:
+        void start() {
+            for (auto e : named_entities) {
+                cout << e->get_component<Name>().get() << endl;
+            }
+        }
+    };
 
 
 Internal Design
