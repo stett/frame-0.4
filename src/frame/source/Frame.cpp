@@ -257,7 +257,7 @@ void Frame::load(string tag) {
             while (true) {
                 is.read(&c_name_char, sizeof(char));
                 if (c_name_char == '\0') break;
-                else c_name += c_name_char;
+                c_name += c_name_char;
             }
 
             // Create a new instance of this component

@@ -39,5 +39,6 @@ namespace {
         f_1.load("data");
         EXPECT_EQ((unsigned)2, n_0->size());
         EXPECT_EQ((unsigned)1, n_1->size());
+        EXPECT_EQ("Entity #1", (*n_0->begin())->get_component<Name>()->str);
     }
 }

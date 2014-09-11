@@ -21,11 +21,12 @@ class Name : public frame::Component {
     }
 
     void load(std::ifstream* is) {
+        str = "";
         char c = ' ';
         while (true) {
             is->read(&c, sizeof(char));
             if (c == '\0') break;
-            else str += c;
+            str += c;
         }
     }
 };
