@@ -16,6 +16,7 @@
 #include "frame/Component.h"
 #include "frame/Node.h"
 #include "frame/System.h"
+#include "frame/Archive.h"
 #include "frame/interface/FrameInterface.h"
 using std::type_index;
 using std::string;
@@ -190,12 +191,11 @@ void Frame::stop() {
 void Frame::save(string tag) {
 
     // Open the file for reading
-    std::ofstream os;
-    os.open(tag, std::ofstream::binary);
+    Archive archive(tag, Archive::Mode::write);
 
     // Output the number of entities
     unsigned int num_entities = entities.size();
-    os.write((char*)&num_entities, sizeof(unsigned int));
+    archive.save<unsigned int>(num_entities);
 
     // Loop through all entities, generating an entity id for each one,
     // and outputing all of its components
@@ -208,7 +208,7 @@ void Frame::save(string tag) {
 
         // Output the number of components for this component
         unsigned int num_components = e->components.size();
-        os.write((char*)&num_components, sizeof(unsigned int));
+        archive.save<unsigned int>(num_components);
 
         // Loop over the components
         for (pair<type_index, Component*> it : e->components) {
@@ -216,27 +216,23 @@ void Frame::save(string tag) {
             // Output this component's type
             type_index type = it.first;
             string c_name = Component::component_names[type];
-            os.write(c_name.c_str(), sizeof(char) * (c_name.size()+1));
+            archive.save<string>(c_name);
 
             // Output this component's data
             Component* c = it.second;
-            c->save(&os);
+            c->save(&archive);
         }
     }
-
-    // Close the file
-    os.close();
 }
 
 void Frame::load(string tag) {
 
     // Open the file
-    std::ifstream is;
-    is.open(tag, std::ifstream::binary);
+    Archive archive(tag, Archive::Mode::read);
 
     // Get the number of entities
     unsigned int num_entities;
-    is.read((char*)&num_entities, sizeof(unsigned int));
+    archive.load<unsigned int>(num_entities);
 
     // Create an entity for each entry
     vector<Entity*> entity_map;
@@ -246,33 +242,23 @@ void Frame::load(string tag) {
 
         // Get the number of components in this entity
         unsigned int num_components;
-        is.read((char*)&num_components, sizeof(unsigned int));
+        archive.load<unsigned int>(num_components);
 
         // Create a component for each entry
         for (unsigned int cid = 0; cid < num_components; cid ++) {
 
             // Get the type of this component
             string c_name;
-            char c_name_char = ' ';
-            while (true) {
-                is.read(&c_name_char, sizeof(char));
-                if (c_name_char == '\0') break;
-                c_name += c_name_char;
-            }
+            archive.load<string>(c_name);
 
-            // Create a new instance of this component
-            //auto factory = Component::component_factories[c_type];
+            // Create a new instance of this component via its factory,
+            // and load the component data 
             auto factory = Component::component_factories[c_name];
             Component* c = factory();
-
-            // Load the next block of data into the component
-            c->load(&is);
+            c->load(&archive);
 
             // Add the component to the entity
             add_component_to_entity(e, c);
         }
     }
-
-    // Close the file
-    is.close();
 }

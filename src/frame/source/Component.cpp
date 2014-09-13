@@ -7,6 +7,7 @@
 #include <map>
 #include <functional>
 #include "frame/Component.h"
+#include "frame/Archive.h"
 using std::type_index;
 using std::string;
 using std::map;

@@ -16,17 +16,11 @@ class Name : public frame::Component {
     string str;
 
  protected:
-    void save(std::ofstream* os) {
-        os->write(str.c_str(), sizeof(char) * (str.size() + 1));
+    void save(frame::Archive* archive) {
+        archive->save<string>(str);
     }
 
-    void load(std::ifstream* is) {
-        str = "";
-        char c = ' ';
-        while (true) {
-            is->read(&c, sizeof(char));
-            if (c == '\0') break;
-            str += c;
-        }
+    void load(frame::Archive* archive) {
+        archive->load<string>(str);
     }
 };

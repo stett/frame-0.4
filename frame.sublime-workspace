@@ -106,27 +106,29 @@
 	},
 	"file_history":
 	[
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
+		"/home/stett/projects/frame/0.4/frame/README.md",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
+		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/samples/sample1.cc",
 		"/home/stett/projects/frame/0.4/frame/build/gtest-1.7.0/CMakeFiles/gtest_main.dir/DependInfo.cmake",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/msvc/gtest_unittest-md.vcproj",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_no_test_unittest.cc",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/components.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
 		"/home/stett/projects/frame/0.4/frame/.gitignore",
 		"/home/stett/projects/frame/0.4/frame/frame.sublime-project",
-		"/home/stett/projects/frame/0.4/frame/README.md",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_component.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
@@ -144,7 +146,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization.h",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_help_test.py",
 		"/home/stett/projects/frame/0.4/frame/subl/frame.sublime-project",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/ComponentData.h",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest-options_test.cc",
 		"/home/stett/projects/frame/0.4/frame/build/Makefile",
@@ -232,8 +233,7 @@
 		"/home/stett/projects/loantrac/loantrac/urls.py",
 		"/home/stett/projects/loantrac/loans/forms.py",
 		"/home/stett/projects/loantrac/loans/fixtures/loans.json",
-		"/home/stett/projects/loantrac/loans/templates/loans/fundingsource_form.html",
-		"/home/stett/projects/loantrac/env/lib/python2.7/site-packages/django/contrib/auth/fixtures/authtestdata.json"
+		"/home/stett/projects/loantrac/loans/templates/loans/fundingsource_form.html"
 	],
 	"find":
 	{
@@ -389,6 +389,18 @@
 		"selected_items":
 		[
 			[
+				"system",
+				"src/frame/include/frame/System.h"
+			],
+			[
+				"component.h",
+				"src/frame/include/frame/Component.h"
+			],
+			[
+				"frame.h",
+				"src/frame/include/frame/Frame.h"
+			],
+			[
 				"read",
 				"README.md"
 			],
@@ -439,10 +451,6 @@
 			[
 				"physi",
 				"src/frame_test/tests/systems/Physics.h"
-			],
-			[
-				"frame.h",
-				"src/frame/include/frame/Frame.h"
 			],
 			[
 				"test_core",
@@ -891,10 +899,6 @@
 			[
 				"accounts/mixin",
 				"accounts/mixins.py"
-			],
-			[
-				"accounts/views",
-				"accounts/views.py"
 			]
 		],
 		"width": 0.0

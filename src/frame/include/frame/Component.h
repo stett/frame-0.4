@@ -2,19 +2,18 @@
 // ... to make his whiny-ass linter shut up about friggin' copyrights.
 
 #pragma once
-#include <fstream>
 #include <typeindex>
 #include <typeinfo>
 #include <string>
 #include <map>
 #include <functional>
 #include <cstdio>
+#include "frame/Archive.h"
 using std::type_index;
 using std::string;
 using std::map;
 using std::pair;
 using std::function;
-
 
 
 namespace frame {
@@ -48,8 +47,8 @@ namespace frame {
         string name() const;
 
     protected:
-        virtual void save(std::ofstream* os) {}
-        virtual void load(std::ifstream* is) {}
+        virtual void save(Archive* archive) {}
+        virtual void load(Archive* archive) {}
     };
 }
 
