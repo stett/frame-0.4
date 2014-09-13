@@ -15,12 +15,18 @@ class Name : public frame::Component {
     virtual ~Name() {}
     string str;
 
+    Name* set(const string& _str) {
+        str = _str;
+        return this;
+    }
+    const string& get() { return str; }
+
  protected:
-    void save(frame::Archive* archive) {
+    void save(frame::ArchiveWriter* archive) {
         archive->save<string>(str);
     }
 
-    void load(frame::Archive* archive) {
+    void load(frame::ArchiveReader* archive) {
         archive->load<string>(str);
     }
 };

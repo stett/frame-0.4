@@ -191,20 +191,20 @@ void Frame::stop() {
 void Frame::save(string tag) {
 
     // Open the file for reading
-    Archive archive(tag, Archive::Mode::write);
+    ArchiveWriter archive(tag);
+
+    // Create an entity map to serialize entity pointers with ids
+    unsigned int eid = 0;
+    for (Entity* e : entities)
+        archive.entity_map[e] = eid ++;
 
     // Output the number of entities
     unsigned int num_entities = entities.size();
     archive.save<unsigned int>(num_entities);
 
-    // Loop through all entities, generating an entity id for each one,
-    // and outputing all of its components
-    int eid = 0;
-    map<Entity*, unsigned int> entity_map;
-    for (Entity* e : entities) {
-
-        // Add this entity to the pointer map
-        entity_map[e] = eid++;
+    // Loop through all entities, outputing all of thier components
+    for (auto it : archive.entity_map) {
+        Entity *e = it.first;
 
         // Output the number of components for this component
         unsigned int num_components = e->components.size();
@@ -228,17 +228,18 @@ void Frame::save(string tag) {
 void Frame::load(string tag) {
 
     // Open the file
-    Archive archive(tag, Archive::Mode::read);
+    ArchiveReader archive(tag);
 
     // Get the number of entities
     unsigned int num_entities;
     archive.load<unsigned int>(num_entities);
 
     // Create an entity for each entry
-    vector<Entity*> entity_map;
-    for (unsigned int eid = 0; eid < num_entities; eid ++) {
-        Entity* e = add_entity();
-        entity_map.push_back(e);
+    for (unsigned int eid = 0; eid < num_entities; eid ++)
+        archive.entity_map.push_back(add_entity());
+
+    // Load the components for each entity
+    for (auto e : archive.entity_map) {
 
         // Get the number of components in this entity
         unsigned int num_components;
@@ -251,14 +252,15 @@ void Frame::load(string tag) {
             string c_name;
             archive.load<string>(c_name);
 
-            // Create a new instance of this component via its factory,
-            // and load the component data 
+            // Create a new instance of this component via its factory
             auto factory = Component::component_factories[c_name];
             Component* c = factory();
-            c->load(&archive);
 
             // Add the component to the entity
             add_component_to_entity(e, c);
+
+            // Load the component data 
+            c->load(&archive);
         }
     }
 }

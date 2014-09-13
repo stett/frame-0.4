@@ -21,5 +21,16 @@ namespace frame {
         Parent* clear();
         Entity* get() { return parent; }
         Entity* operator* () { return parent; }
+
+    protected:
+        virtual void save(ArchiveWriter* archive) {
+            archive->save<Entity*>(parent);
+        }
+
+        virtual void load(ArchiveReader* archive) {
+            //Entity* _parent;
+            archive->load<Entity*>(parent);//_parent);
+            //set(_parent);
+        }
     };
 }

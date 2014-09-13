@@ -29,13 +29,10 @@ namespace frame {
         static map<string, function<Component*()>> component_factories;
         static map<type_index, unsigned int> component_masks;
         static map<type_index, string> component_names;
-        //static map<string, type_index> component_types;
         static function<Component*()> register_component(string name, type_index type, function<Component*()> factory);
-        //static Component* make_component(type_index type);
         static Component* make_component(string name);
     protected:
         Entity* entity;
-
 
     public:
         Component() : entity(0) {}
@@ -47,8 +44,8 @@ namespace frame {
         string name() const;
 
     protected:
-        virtual void save(Archive* archive) {}
-        virtual void load(Archive* archive) {}
+        virtual void save(ArchiveWriter* archive) {}
+        virtual void load(ArchiveReader* archive) {}
     };
 }
 
