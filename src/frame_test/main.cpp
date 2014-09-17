@@ -6,6 +6,7 @@
 #include "tests/test_component.h"
 #include "tests/test_system.h"
 #include "tests/test_serialization.h"
+#include "tests/test_subframe.h"
 #include "gtest/gtest.h"
 
 int main(int argc, char** argv) {

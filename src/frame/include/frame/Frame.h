@@ -5,6 +5,7 @@
 #include <string>
 #include <set>
 #include "frame/Entity.h"
+#include "frame/Component.h"
 #include "frame/Node.h"
 #include "frame/System.h"
 #include "frame/interface/FrameInterface.h"
@@ -14,7 +15,7 @@ using std::set;
 
 namespace frame {
 
-    class Frame : public FrameInterface {
+    class Frame : public FrameInterface, public Component {
 
     private:
         set<Entity*> entities;
@@ -91,5 +92,9 @@ namespace frame {
         virtual void stop();
         virtual void save(string tag);
         virtual void load(string tag);
+
+    protected:
+        virtual void save(ArchiveWriter* archive);
+        virtual void load(ArchiveReader* archive);
     };
 }

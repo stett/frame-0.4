@@ -17,7 +17,7 @@ namespace frame {
         set<Entity*> child_list;
 
     public:
-        Children() {}// mask = 1; }
+        Children() {}
         ~Children() { clear(); }
 
     public:
@@ -30,20 +30,7 @@ namespace frame {
         set<Entity*>::iterator find(Entity* e) { return child_list.find(e); }
 
     protected:
-        virtual void save(ArchiveWriter* archive) {
-            archive->save<unsigned int>(child_list.size());
-            for (auto child : child_list) {
-                archive->save<Entity*>(child);
-            }
-        }
-        virtual void load(ArchiveReader* archive) {
-            unsigned int num_children;
-            archive->load<unsigned int>(num_children);
-            for (int i = 0; i < num_children; i ++) {
-                Entity* child;
-                archive->load<Entity*>(child);
-                child_list.insert(child);
-            }
-        }
+        void save(ArchiveWriter* archive);
+        void load(ArchiveReader* archive);
     };
 }

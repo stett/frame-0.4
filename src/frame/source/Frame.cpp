@@ -193,22 +193,28 @@ void Frame::save(string tag) {
     // Open the file for reading
     ArchiveWriter archive(tag);
 
+    // Save the frame entitys/components
+    save(&archive);
+}
+
+void Frame::save(ArchiveWriter* archive) {
+
     // Create an entity map to serialize entity pointers with ids
     unsigned int eid = 0;
     for (Entity* e : entities)
-        archive.entity_map[e] = eid ++;
+        archive->entity_map[e] = eid ++;
 
     // Output the number of entities
     unsigned int num_entities = entities.size();
-    archive.save<unsigned int>(num_entities);
+    archive->save<unsigned int>(num_entities);
 
     // Loop through all entities, outputing all of thier components
-    for (auto it : archive.entity_map) {
+    for (auto it : archive->entity_map) {
         Entity *e = it.first;
 
         // Output the number of components for this component
         unsigned int num_components = e->components.size();
-        archive.save<unsigned int>(num_components);
+        archive->save<unsigned int>(num_components);
 
         // Loop over the components
         for (pair<type_index, Component*> it : e->components) {
@@ -216,11 +222,11 @@ void Frame::save(string tag) {
             // Output this component's type
             type_index type = it.first;
             string c_name = Component::component_names[type];
-            archive.save<string>(c_name);
+            archive->save<string>(c_name);
 
             // Output this component's data
             Component* c = it.second;
-            c->save(&archive);
+            c->save(archive);
         }
     }
 }
@@ -230,27 +236,36 @@ void Frame::load(string tag) {
     // Open the file
     ArchiveReader archive(tag);
 
+    // Use the archive reader to import components
+    load(&archive);
+}
+
+void Frame::load(ArchiveReader* archive) {
+
+    // Clear all current entities
+    clear_entities();
+
     // Get the number of entities
     unsigned int num_entities;
-    archive.load<unsigned int>(num_entities);
+    archive->load<unsigned int>(num_entities);
 
     // Create an entity for each entry
     for (unsigned int eid = 0; eid < num_entities; eid ++)
-        archive.entity_map.push_back(add_entity());
+        archive->entity_map.push_back(add_entity());
 
     // Load the components for each entity
-    for (auto e : archive.entity_map) {
+    for (auto e : archive->entity_map) {
 
         // Get the number of components in this entity
         unsigned int num_components;
-        archive.load<unsigned int>(num_components);
+        archive->load<unsigned int>(num_components);
 
         // Create a component for each entry
         for (unsigned int cid = 0; cid < num_components; cid ++) {
 
             // Get the type of this component
             string c_name;
-            archive.load<string>(c_name);
+            archive->load<string>(c_name);
 
             // Create a new instance of this component via its factory
             auto factory = Component::component_factories[c_name];
@@ -260,7 +275,7 @@ void Frame::load(string tag) {
             add_component_to_entity(e, c);
 
             // Load the component data 
-            c->load(&archive);
+            c->load(archive);
         }
     }
 }
