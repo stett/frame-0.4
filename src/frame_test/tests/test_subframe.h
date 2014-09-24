@@ -13,20 +13,12 @@ using frame::Frame;
 
 namespace {
 
-    class SubFrameTest : public ::testing::Test {
-    public:
-        Frame* f0;
-    protected:
-        virtual void SetUp() {
-            f0 = new Frame();
-        }
-        virtual void TearDown() {
-            delete f0;
-        }
-    };
+    class SubFrameTest : public ::testing::Test {};
 
-    TEST_F(SubFrameTest, TestSubFrame) {
+    TEST_F(SubFrameTest, TestSubFrameCount) {
 
+        Frame root;
+        Frame* f0 = &root;
         auto f1 = f0->add_entity()->add_component<Frame>();
         auto f2 = f0->add_entity()->add_component<Frame>();
         auto f3 = f1->add_entity()->add_component<Frame>();

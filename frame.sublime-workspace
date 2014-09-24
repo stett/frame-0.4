@@ -114,6 +114,11 @@
 	},
 	"file_history":
 	[
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_component.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
@@ -122,11 +127,8 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Children.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_serialization.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Archive.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Archive.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
@@ -142,7 +144,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/macros/component_mask_macro.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
 		"/home/stett/projects/frame/0.4/frame/README.md",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/samples/sample1.cc",
@@ -152,7 +153,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
 		"/home/stett/projects/frame/0.4/frame/.gitignore",
 		"/home/stett/projects/frame/0.4/frame/frame.sublime-project",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_component.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/components.cpp",
@@ -406,6 +406,10 @@
 		"selected_items":
 		[
 			[
+				"entity",
+				"src/frame/include/frame/Entity.h"
+			],
+			[
 				"node",
 				"src/frame/include/frame/Node.h"
 			],
@@ -440,10 +444,6 @@
 			[
 				"read",
 				"README.md"
-			],
-			[
-				"entity",
-				"src/frame/include/frame/Entity.h"
 			],
 			[
 				"position",

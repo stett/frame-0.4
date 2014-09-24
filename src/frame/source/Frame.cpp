@@ -31,6 +31,8 @@ using frame::Node;
 using frame::System;
 
 
+REGISTER_FRAME_COMPONENT(Frame);
+
 /*
  * Basic ECS operations - adding removing entities, nodes, systems
  */

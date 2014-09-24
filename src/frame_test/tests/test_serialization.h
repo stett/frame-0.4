@@ -117,4 +117,52 @@ namespace {
             };
         }
     }
+
+    TEST_F(SerializationTest, TestSaveFrameTree) {
+        Frame r0;
+        Frame* f0 = &r0;
+
+        // Add some named sub-frames to the root frame
+        auto e1 = f0->add_entity<Frame, Name>();
+        auto f1 = e1->get_component<Frame>();
+        e1->get_component<Name>()->set("Sub Frame 1");
+        auto e2 = f0->add_entity<Frame, Name>();
+        auto f2 = e2->get_component<Frame>();
+        e2->get_component<Name>()->set("Sub Frame 2");
+
+        // Add some entities to the frames
+        f0->add_entity<Position>()->add_component<Name>()->set("Entity 0.1");
+        f1->add_entity<Position>()->add_component<Name>()->set("Entity 1.1");
+        f1->add_entity<Position>()->add_component<Name>()->set("Entity 1.2");
+        f2->add_entity<Position>()->add_component<Name>()->set("Entity 2.1");
+
+        // Save the root frame, make a new root frame,
+        // and load the data into it.
+        Frame r1;
+        f0 = &r1;
+        r0.save("data");
+        /*
+        r1.load("data");
+
+        // Ensure that the sub-frames exist
+        auto n0 = f0->add_node<Frame, Name>();
+        EXPECT_EQ((unsigned)2, n0->size());
+        e1 = e2 = 0;
+        for (auto e : *n0) {
+            auto n = e->get_component<Name>()->get();
+            if (n == "Sub Frame 1") e1 = e;
+            else if (n == "Sub Frame 2") e2 = e;
+        }
+        ASSERT_NE((Entity*)0, e1) << "Expected to find \"Sub Frame 1\"";
+        ASSERT_NE((Entity*)0, e2) << "Expected to find \"Sub Frame 2\"";
+
+        // Ensure that the components exist
+        n0 = f0->add_node<Position, Name>();
+        auto n1 = e1->get_component<Frame>()->add_node<Position, Name>();
+        auto n2 = e2->get_component<Frame>()->add_node<Position, Name>();
+        EXPECT_EQ((unsigned)1, n0->size());
+        EXPECT_EQ((unsigned)2, n1->size());
+        EXPECT_EQ((unsigned)1, n2->size());
+        */
+    }
 }
