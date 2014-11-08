@@ -2,6 +2,9 @@
 # CMake version
 cmake_minimum_required (VERSION 3.0.1)
 
+# CMake modules directory
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+
 # Project name
 project (FrameTest)
 
