@@ -11,9 +11,6 @@ add_definitions(-std=c++0x
                 -Wall
                 -Wextra)
 
-# GTest
-add_subdirectory(gtest-1.7.0)
-
 # Frame
 add_subdirectory(frame)
 

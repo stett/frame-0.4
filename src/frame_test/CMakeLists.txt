@@ -2,6 +2,9 @@
 # Project name
 project(FrameTest)
 
+# GTest
+add_subdirectory(gtest-1.7.0)
+
 # Include everything
 include_directories(${FrameTest_SOURCE_DIR})
 include_directories(${Frame_SOURCE_DIR}/include)
