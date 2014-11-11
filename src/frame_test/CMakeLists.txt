@@ -1,19 +1,15 @@
 
-# Find packaes
-find_package(SFML 2 REQUIRED system window graphics) #// network audio)
+# Project name
+project(FrameTest)
 
 # Include everything
 include_directories(${FrameTest_SOURCE_DIR})
-
 include_directories(${Frame_SOURCE_DIR}/include)
-
 include_directories(${gtest_SOURCE_DIR}/include
                     ${gtest_SOURCE_DIR})
-
-include_directories(${SFML_INCLUDE_DIR})
 
 # Define the executable test program
 add_executable(FrameTest main.cpp components.cpp)
 
 # Link everything to the FrameTest executable
-target_link_libraries(FrameTest Frame gtest gtest_main ${SFML_LIBRARIES})
+target_link_libraries(FrameTest Frame gtest gtest_main)
