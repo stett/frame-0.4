@@ -5,6 +5,7 @@
 #include "frame/Frame.h"
 #include "systems/Window.hpp"
 #include "components/Sprite.hpp"
+#include "entitiy/factories.hpp"
 
 int main(int argc, char** argv) {
 

@@ -21,6 +21,9 @@ class Window : public System {
     shared_ptr<sf::RenderWindow> window;
     Node* sprites;
 
+ public:
+    Window() : sprites(0) {}
+
  protected:
     void start() {
 

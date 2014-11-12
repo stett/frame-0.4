@@ -5,9 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "frame/Component.h"
 
-using frame::Component;
-
-class Sprite : public Component {
+class Sprite : public frame::Component {
  public:
     sf::Sprite sprite;
 
