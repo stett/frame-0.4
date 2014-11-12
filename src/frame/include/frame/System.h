@@ -15,7 +15,7 @@ namespace frame {
         Frame* f;
 
     public:
-        explicit System(Frame* f) : f(f) {}
+        System() : f(0) {}
         virtual ~System() {}
 
     protected:

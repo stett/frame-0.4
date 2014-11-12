@@ -40,7 +40,18 @@ namespace {
         f_1.load("data");
         EXPECT_EQ((unsigned)2, n_0->size());
         EXPECT_EQ((unsigned)1, n_1->size());
-        EXPECT_EQ("Entity #1", (*n_0->begin())->get_component<Name>()->str);
+
+        // Make sure n_0 contains both entities
+        bool found_e1 = false;
+        bool found_e2 = false;
+        for (auto e : *n_0) {
+            if (e->get_component<Name>()->str == "Entity #1")
+                found_e1 = true;
+            if (e->get_component<Name>()->str == "Entity #2")
+                found_e2 = true;
+        }
+        EXPECT_TRUE(found_e1);
+        EXPECT_TRUE(found_e2);
     }
 
     TEST_F(SerializationTest, TestSaveParentChild) {

@@ -15,3 +15,12 @@ add_executable(FrameSandbox main.cpp)
 
 # Make links
 target_link_libraries(FrameSandbox Frame ${SFML_LIBRARIES})
+
+message("$<TARGET_FILE_DIR:FrameSandbox>")
+
+add_custom_command(
+    TARGET FrameSandbox
+    PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    "${CMAKE_CURRENT_SOURCE_DIR}/resources/textures"
+    $<TARGET_FILE_DIR:FrameSandbox>)

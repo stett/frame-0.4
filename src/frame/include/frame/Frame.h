@@ -62,7 +62,13 @@ namespace frame {
 
         template <typename T>
         T* add_system() {
-            T* s = new T(this);
+            return add_system<T>(new T);
+        }
+
+        template <typename T>
+        T* add_system(T* s) {
+            s->f = this;
+            ((System*)s)->start();
             systems.insert(s);
             return s;
         }

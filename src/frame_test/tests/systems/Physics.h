@@ -16,22 +16,21 @@ class Physics : public System {
  protected:
     Node* bodies;
 
- public:
-    Physics(Frame* f) : System(f) {
+ protected:
+    void start() {
         bodies = f->add_node<Position, Velocity>();
     }
-    virtual ~Physics() {
-        bodies->remove();
-    }
 
- protected:
-
-    virtual void step() {
+    void step() {
         for (auto e_body : *bodies) {
             auto c_position = e_body->get_component<Position>();
             auto c_velocity = e_body->get_component<Velocity>();
             c_position->x += c_velocity->x;
             c_position->y += c_velocity->y;
         }
+    }
+
+    void stop() {
+        bodies->remove();
     }
 };

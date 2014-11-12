@@ -30,9 +30,9 @@ namespace {
 
         f.step();
 
-        EXPECT_EQ(e0->get_component<Velocity>()->x, 10);
-        EXPECT_EQ(e0->get_component<Position>()->x, 10);
-        EXPECT_EQ(e1->get_component<Velocity>()->x, -10);
-        EXPECT_EQ(e1->get_component<Position>()->x, 0);
+        EXPECT_EQ(10, e0->get_component<Velocity>()->x);
+        EXPECT_EQ(10, e0->get_component<Position>()->x);
+        EXPECT_EQ(-10, e1->get_component<Velocity>()->x);
+        EXPECT_EQ(0, e1->get_component<Position>()->x);
     }
 }

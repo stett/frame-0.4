@@ -65,6 +65,7 @@ void Frame::clear_systems() {
 }
 
 void Frame::remove_system(System* s) {
+    s->stop();
     systems.erase(s);
     delete s;
 }
@@ -169,9 +170,10 @@ void Frame::remove_components_from_node(Node* n, unsigned int mask) {
  */
 
 void Frame::run() {
+    running = true;
     for (auto s : systems) s->start();
     while (running) step();
-    for (auto s : systems)s->stop();
+    //for (auto s : systems)s->stop();
 }
 
 void Frame::step() {

@@ -114,14 +114,22 @@
 	},
 	"file_history":
 	[
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/scripts/sandbox.sh",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_sfml.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/sfml-2.1/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_component.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Parent.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Parent.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Children.cpp",
@@ -134,7 +142,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Archive.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/interface/FrameInterface.h",
 		"/home/stett/projects/frame/0.4/frame/build/data",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_catch_exceptions_test.py",
@@ -145,7 +152,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/macros/component_mask_macro.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
 		"/home/stett/projects/frame/0.4/frame/README.md",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/samples/sample1.cc",
 		"/home/stett/projects/frame/0.4/frame/build/gtest-1.7.0/CMakeFiles/gtest_main.dir/DependInfo.cmake",
@@ -154,8 +160,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
 		"/home/stett/projects/frame/0.4/frame/.gitignore",
 		"/home/stett/projects/frame/0.4/frame/frame.sublime-project",
-		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/components.cpp",
 		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/FrameSerializer.h",
@@ -237,11 +241,7 @@
 		"/home/stett/projects/loantrac/accounts/tests/test_forms.py",
 		"/home/stett/projects/loantrac/accounts/mixins.py",
 		"/home/stett/projects/loantrac/accounts/tests/factories.py",
-		"/home/stett/projects/loantrac/accounts/templates/accounts/account_create.html",
-		"/home/stett/projects/loantrac/accounts/admin.py",
-		"/home/stett/projects/loantrac/htmlcov/modules/loans.exportlib.html",
-		"/home/stett/projects/loantrac/util/templatetags/custom_tags.py",
-		"/home/stett/projects/loantrac/util/date_.py"
+		"/home/stett/projects/loantrac/accounts/templates/accounts/account_create.html"
 	],
 	"find":
 	{
@@ -356,7 +356,7 @@
 	},
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 42.0
 	},
 	"input":
 	{
@@ -945,7 +945,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 245.0,
+	"side_bar_width": 320.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
