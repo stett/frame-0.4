@@ -114,19 +114,37 @@
 	},
 	"file_history":
 	[
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
-		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/main.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/components/Sprite.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/systems/Window.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/entity_factories.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/components/Slot.hpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/systems/FixedStep.hpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_sandbox/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/scripts/sandbox.sh",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_metabox.h",
+		"/home/stett/projects/frame/0.4/frame/scripts/test.sh",
+		"/home/stett/projects/frame/0.4/frame/scripts/clean.sh",
+		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/System.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_core.h",
+		"/home/stett/projects/frame/0.4/frame/scripts/build.sh",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/gtest-1.7.0/CONTRIBUTORS",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/gtest-1.7.0/xcode/Config/ReleaseProject.xcconfig",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_serialization.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
+		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
+		"/home/stett/projects/frame/0.4/frame/frame.sublime-project",
+		"/home/stett/projects/frame/0.4/frame/src/CMakeLists.txt",
+		"/home/stett/projects/frame/0.4/frame/src/frame_test/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame/CMakeLists.txt",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_sfml.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/main.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/sfml-2.1/CMakeLists.txt",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Entity.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Component.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_component.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/CMakeLists.txt",
@@ -135,23 +153,16 @@
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Children.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/core/Children.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Node.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_serialization.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/source/Frame.cpp",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Frame.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Archive.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/source/Archive.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Name.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/Component.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/interface/FrameInterface.h",
 		"/home/stett/projects/frame/0.4/frame/build/data",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_catch_exceptions_test.py",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_help_test.py",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Position.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/Velocity.h",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/components.cpp",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/macros/component_mask_macro.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_system.h",
-		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/systems/Physics.h",
 		"/home/stett/projects/frame/0.4/frame/README.md",
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/samples/sample1.cc",
 		"/home/stett/projects/frame/0.4/frame/build/gtest-1.7.0/CMakeFiles/gtest_main.dir/DependInfo.cmake",
@@ -159,7 +170,6 @@
 		"/home/stett/projects/frame/0.4/frame/src/gtest-1.7.0/test/gtest_no_test_unittest.cc",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/test_frame.h",
 		"/home/stett/projects/frame/0.4/frame/.gitignore",
-		"/home/stett/projects/frame/0.4/frame/frame.sublime-project",
 		"/home/stett/projects/frame/0.4/frame/src/frame_test/tests/components/components.cpp",
 		"/home/stett/projects/frame/0.4/frame/build/CMakeFiles/CMakeOutput.log",
 		"/home/stett/projects/frame/0.4/frame/src/frame/include/frame/serialization/FrameSerializer.h",
@@ -231,21 +241,11 @@
 		"/home/stett/.config/sublime-text-3/Packages/User/(custom).tmTheme",
 		"/home/stett/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/home/stett/projects/loantrac/tasks/tests/test_triggers.py",
-		"/home/stett/projects/loantrac/util/test.py",
-		"/home/stett/projects/loantrac/loans/models.py",
-		"/home/stett/projects/loantrac/accounts/models.py",
-		"/home/stett/projects/loantrac/loans/tests/factories.py",
-		"/home/stett/projects/loantrac/loans/queries.py",
-		"/home/stett/projects/loantrac/htmlcov/modules/loanapplications.models.html",
-		"/home/stett/projects/loantrac/accounts/middleware.py",
-		"/home/stett/projects/loantrac/accounts/tests/test_forms.py",
-		"/home/stett/projects/loantrac/accounts/mixins.py",
-		"/home/stett/projects/loantrac/accounts/tests/factories.py",
-		"/home/stett/projects/loantrac/accounts/templates/accounts/account_create.html"
+		"/home/stett/projects/loantrac/util/test.py"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -262,6 +262,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"start()",
 			"archive",
 			"save(",
 			"entity_map",
@@ -385,6 +386,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.autopep8":
+	{
+		"height": 0.0
+	},
 	"output.exec":
 	{
 		"height": 100.0
@@ -408,12 +413,48 @@
 		"selected_items":
 		[
 			[
-				"frame.h",
+				"windo",
+				"src/frame_sandbox/systems/Window.hpp"
+			],
+			[
+				"scripts/",
+				"scripts/sandbox.sh"
+			],
+			[
+				"frame",
 				"src/frame/include/frame/Frame.h"
+			],
+			[
+				"sand",
+				"scripts/sandbox.sh"
+			],
+			[
+				"scripts/test",
+				"scripts/test.sh"
 			],
 			[
 				"entity",
 				"src/frame/include/frame/Entity.h"
+			],
+			[
+				"physi",
+				"src/frame_test/tests/systems/Physics.h"
+			],
+			[
+				"system.",
+				"src/frame/include/frame/System.h"
+			],
+			[
+				"physics",
+				"src/frame_test/tests/systems/Physics.h"
+			],
+			[
+				"system.h",
+				"src/frame/include/frame/System.h"
+			],
+			[
+				"frame.h",
+				"src/frame/include/frame/Frame.h"
 			],
 			[
 				"node",
@@ -456,10 +497,6 @@
 				"src/frame_test/tests/components/Position.h"
 			],
 			[
-				"frame",
-				"src/frame/include/frame/Frame.h"
-			],
-			[
 				"veloci",
 				"src/frame_test/tests/components/Velocity.h"
 			],
@@ -468,20 +505,12 @@
 				"src/frame/include/frame/Frame.h"
 			],
 			[
-				"physics",
-				"src/frame_test/tests/systems/Physics.h"
-			],
-			[
 				"phys",
 				"src/frame_test/tests/systems/Physics.h"
 			],
 			[
 				"main",
 				"src/frame_test/main.cpp"
-			],
-			[
-				"physi",
-				"src/frame_test/tests/systems/Physics.h"
 			],
 			[
 				"test_core",
@@ -894,30 +923,6 @@
 			[
 				"templates/task",
 				"tasks/templates/task-list.html"
-			],
-			[
-				"templates/clients",
-				"loans/templates/loans/client_list.html"
-			],
-			[
-				"tasks/test_views",
-				"tasks/tests/test_views.py"
-			],
-			[
-				"loanapplication/models",
-				"loanapplications/models.py"
-			],
-			[
-				"loanapplication/tests/fac",
-				"loanapplications/tests/factories.py"
-			],
-			[
-				"loans/tests/facto",
-				"loans/tests/factories.py"
-			],
-			[
-				"test_triggers",
-				"tasks/tests/test_triggers.py"
 			]
 		],
 		"width": 0.0
@@ -945,7 +950,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 320.0,
+	"side_bar_width": 244.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -13,7 +13,7 @@ namespace frame {
         Entity* parent;
 
     public:
-        Parent() : parent(0) {}// mask = 1 << 1; }
+        Parent() : parent(0) {}
         ~Parent() { clear(); }
 
     public:
@@ -28,9 +28,7 @@ namespace frame {
         }
 
         virtual void load(ArchiveReader* archive) {
-            //Entity* _parent;
-            archive->load<Entity*>(parent);//_parent);
-            //set(_parent);
+            archive->load<Entity*>(parent);
         }
     };
 }
