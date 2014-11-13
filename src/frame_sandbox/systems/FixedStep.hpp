@@ -8,7 +8,7 @@
 
 using frame::System;
 
-class FixedStepSystem : public System {
+class FixedStep : public System {
     float dt_min;
     float dt_accum;
     sf::Time t0;
@@ -16,7 +16,7 @@ class FixedStepSystem : public System {
     sf::Clock clock;
 
  public:
-    explicit FixedStepSystem(float dt_min_ = 1.f/30.f) :
+    explicit FixedStep(float dt_min_ = 1.f/30.f) :
         dt_min(dt_min_), dt_accum(0) {}
 
  protected:

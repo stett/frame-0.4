@@ -15,6 +15,9 @@ class Physics : public FixedStep {
     Node* worlds;
     Node* bodies;
 
+ public:
+    Physics() : worlds(0), bodies(0) {}
+
  protected:
     void start() {
         worlds = f->add_node<PhysicsWorld>();
@@ -24,8 +27,9 @@ class Physics : public FixedStep {
     void update(float dt) {
 
         // Step all worlds
-        for (auto e : *worlds)
+        for (auto e : *worlds) {
             e->get_component<PhysicsWorld>()->world->Step(dt, 6, 2);
+        }
     }
 
     void step_end() {

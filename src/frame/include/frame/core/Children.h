@@ -17,7 +17,7 @@ namespace frame {
         set<Entity*> child_list;
 
     public:
-        Children() {}// mask = 1; }
+        Children() {}
         ~Children() { clear(); }
 
     public:

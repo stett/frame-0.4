@@ -19,7 +19,7 @@ Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0)
 
     // Create a root metabox
     auto e = f->add_entity<
-        Sprite,
+        //Sprite,
         Children,
         //Slots,
         //BoxDoors,

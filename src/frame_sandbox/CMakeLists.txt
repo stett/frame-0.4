@@ -13,7 +13,7 @@ include_directories(${FrameSandbox_SOURCE_DIR})
 include_directories(${Frame_SOURCE_DIR}/include)
 
 # Define the executable
-add_executable(FrameSandbox main.cpp)
+add_executable(FrameSandbox main.cpp components.cpp)
 
 # Make links
 target_link_libraries(FrameSandbox Frame Box2D ${SFML_LIBRARIES})

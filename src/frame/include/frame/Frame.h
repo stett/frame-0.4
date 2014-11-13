@@ -43,6 +43,7 @@ namespace frame {
         void clear_nodes();
         void clear_systems();
         void remove_system(System* s);
+        void remove_singleton(Singleton* s);
 
         template <typename... T>
         Entity* add_entity() {

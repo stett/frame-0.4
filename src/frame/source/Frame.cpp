@@ -70,6 +70,11 @@ void Frame::remove_system(System* s) {
     delete s;
 }
 
+void Frame::remove_singleton(Singleton* s) {
+    auto type = type_index(typeid(s));
+    singletons.erase(type);
+}
+
 
 /*
  * Raveling system - keeps entities and nodes properly associated
