@@ -16,7 +16,9 @@ using frame::Frame;
 using frame::System;
 using frame::Node;
 
+
 class Window : public System {
+
  private:
     shared_ptr<sf::RenderWindow> window;
     Node* sprites;

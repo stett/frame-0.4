@@ -4,12 +4,17 @@
 #pragma once
 #include <string>
 #include <set>
+#include <map>
+#include <typeinfo>
+#include <typeindex>
 #include "frame/Entity.h"
 #include "frame/Node.h"
 #include "frame/System.h"
+#include "frame/Singleton.h"
 #include "frame/interface/FrameInterface.h"
 using std::string;
 using std::set;
+using std::type_index;
 
 
 namespace frame {
@@ -20,6 +25,7 @@ namespace frame {
         set<Entity*> entities;
         set<Node*> nodes;
         set<System*> systems;
+        map<type_index, Singleton*> singletons;
         bool running;
 
     public:
@@ -71,6 +77,15 @@ namespace frame {
             ((System*)s)->start();
             systems.insert(s);
             return s;
+        }
+
+        template <typename T>
+        T* singleton() {
+            auto type = type_index(typeid(T));
+            auto it = singletons.find(type);
+            if (it == singletons.end())
+                singletons[type] = new T();
+            return (T*)singletons[type];
         }
 
     private:
