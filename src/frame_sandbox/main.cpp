@@ -20,7 +20,8 @@ int main(int argc, char** argv) {
     f.add_system<Window>();
 
     // Add an entity with a sprite component
-    f.add_entity<Sprite>();
+    //f.add_entity<Sprite>();
+    auto e = box_entity(&f);
 
     // Run the program
     f.run();

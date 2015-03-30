@@ -42,6 +42,18 @@ namespace {
         EXPECT_EQ(e->get_component<Position>(), c) << "Entity's component list should contain the component we just added";
     }
 
+    TEST_F(FrameTest, TestRemoveComponent) {
+
+        // Create an entity, add two components, remove one, and ensure
+        // that the new thing only has one remaining
+        auto e = f.add_entity();
+        auto p = e->add_component<Position>();
+        auto n = e->add_component<Name>();
+        e->remove_component<Name>();
+        EXPECT_EQ(e->get_component<Position>(), p);
+        EXPECT_EQ(e->get_component<Name>(), (Component*)0);
+    }
+
     TEST_F(FrameTest, TestComponentMasks) {
         auto e_0 = f.add_entity();
         auto e_1 = f.add_entity();

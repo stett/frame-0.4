@@ -8,6 +8,7 @@
 #include "frame/core/Parent.h"
 #include "frame/core/Children.h"
 #include "components/Slot.hpp"
+#include "components/Slots.hpp"
 #include "components/PhysicsBody.hpp"
 #include "components/PhysicsWorld.hpp"
 using frame::Frame;
@@ -21,7 +22,7 @@ Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0)
     auto e = f->add_entity<
         //Sprite,
         Children,
-        //Slots,
+        Slots,
         //BoxDoors,
         PhysicsWorld
     >();

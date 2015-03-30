@@ -67,8 +67,10 @@ class Window : public System {
     }
 
     void step() {
-        for (auto e : *sprites)
+        for (auto e : *sprites) {
+            auto texture = e->get_component<RenderTexture>()->get();
             window->draw(e->get_component<Sprite>()->sprite);
+        }
     }
 
     void step_end() {

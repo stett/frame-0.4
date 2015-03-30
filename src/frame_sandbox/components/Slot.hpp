@@ -3,8 +3,9 @@
 
 #pragma once
 #include "frame/Component.h"
+using frame::Component;
 
-class Slot : public frame::Component {
+class Slot : public Component {
  private:
     int x;
     int y;
