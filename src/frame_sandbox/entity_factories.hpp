@@ -14,6 +14,7 @@ using frame::Entity;
 using frame::Parent;
 using frame::Children;
 
+/*
 Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0) {
 
     // Create a root metabox
@@ -32,3 +33,4 @@ Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0)
         e->add_component<PhysicsBody>();
     }
 }
+*/

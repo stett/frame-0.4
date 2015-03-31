@@ -27,7 +27,7 @@ BoxNode::~BoxNode() {
 }
 
 
-BoxNode* BoxNode::set_parent(Entity* e, int x = 0, int y = 0) {
+BoxNode* BoxNode::set_parent(Entity* e, int x, int y) {
 
     // If the new parent doesn't have an opening in slot (x, y), stop here.
     // This keeps us from accidentally orphaning box tree nodes.
@@ -48,7 +48,7 @@ BoxNode* BoxNode::set_parent(Entity* e, int x = 0, int y = 0) {
     return this;
 }
 
-BoxNode* BoxNode::add_child(Entity* e, int x = 0, int y = 0) {
+BoxNode* BoxNode::add_child(Entity* e, int x, int y) {
 
     // If there's already something in this slot, stop here.
     if (slots[x][y].child)

@@ -21,13 +21,13 @@ int main(int argc, char** argv) {
     f.add_system<Window>();
 
     // Add an entity with a sprite component
-    frame::Entity* box0 = f.add_entity<BoxNode>();
-    //frame::Entity* box1 = f.add_entity<BoxNode, Sprite>();
-    //frame::Entity* box2 = f.add_entity<BoxNode, Sprite>();
-    //frame::Entity* box3 = f.add_entity<BoxNode, Sprite>();
+    auto box0 = f.add_entity<Sprite, BoxNode>();
+    box0->get_component<BoxNode>()
+        ->add_child(f.add_entity<Sprite>(), 3, 3);
 
-    //box1->get_component<BoxNode>()->set_parent(box0);
-    //box2->get_component<BoxNode>()->set_parent(box0);
+    auto box1 = f.add_entity<Sprite, BoxNode>();
+    box1->get_component<BoxNode>()
+        ->set_parent(box0, 2, 3);
 
     // Run the program
     f.run();
