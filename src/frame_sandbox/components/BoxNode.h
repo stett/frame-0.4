@@ -12,16 +12,20 @@ using frame::Component;
 
 class BoxNode;
 
-
 enum BoxFace { Top = 0, Right, Bottom, Left };
 
 
 struct Slot {
+    BoxNode* node;
     Entity* child;
     int x, y;
+    Slot* adj[4];
 
-    Slot(Entity* child = 0, int x = 0, int y = 0)
-    : child(child), x(x), y(y) {}
+    Slot(BoxNode* node = 0, Entity* child = 0, int x = 0, int y = 0)
+    : node(node), child(child), x(x), y(y) {
+        for (int face = 0; face < 4; face ++)
+            adj[face] = 0;
+    }
 };
 
 
@@ -59,6 +63,10 @@ class BoxNode : public Component {
     Slot* get_slot() { return slot; }
     Slot* get_slot(int x, int y) { return &slots[x][y]; }
     const set<Entity*>& get_children() { return children; }
+
+ protected:
+    void find_edge_adjacencies();
+    void find_edge_adjacencies(BoxFace face);
 
  protected:
     virtual void save(frame::ArchiveWriter* archive) {
