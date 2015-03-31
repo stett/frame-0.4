@@ -47,7 +47,7 @@ namespace frame {
         template <typename T>
         void remove_component() {
             auto c = get_component<T>();
-            ((FrameInterface*)f)->remove_component_from_entity(c);
+            ((FrameInterface*)f)->remove_component_from_entity(this, c);
         }
 
         template <typename T>
