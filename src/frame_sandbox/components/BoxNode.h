@@ -3,6 +3,7 @@
 #include <set>
 #include "frame/Entity.h"
 #include "frame/Component.h"
+#include "frame/Archive.h"
 using std::vector;
 using std::set;
 using frame::Entity;
@@ -40,4 +41,50 @@ class BoxNode : public Component {
     Slot* get_slot() { return slot; }
     Slot* get_slot(int x, int y) { return &slots[x][y]; }
     const set<Entity*>& get_children() { return children; }
+
+ protected:
+    virtual void save(frame::ArchiveWriter* archive) {
+
+        //
+        // NOTE: We don't save parent data here.
+        // Instead, we assume the top parent is saved/loaded.
+        // Parent data is loaded to child nodes in the child-load loop.
+        //
+
+        // Save the size of the child list
+        archive->save<unsigned int>(children.size());
+
+        // Save each child
+        for (int x = 0; x < 7; x ++)
+        for (int y = 0; y < 7; y ++) {
+            auto child = slots[x][y].child;
+            if (!child) continue;
+
+            // Save the child's pointer and slot position
+            archive->save<Entity*>(child);
+            archive->save<int>(x);
+            archive->save<int>(y);
+        }
+    }
+
+    virtual void load(frame::ArchiveReader* archive) {
+
+        // Load the number of children
+        unsigned int num_children;
+        archive->load<unsigned int>(num_children);
+
+        // Load each of the children
+        for (int i = 0; i < num_children; i ++) {
+
+            // Load the child's pointer and slot position
+            Entity* child;
+            int x, y;
+            archive->load<Entity*>(child);
+            archive->load<int>(x);
+            archive->load<int>(y);
+
+            // Add the child
+            add_child(child, x, y);
+        }
+    }
 };

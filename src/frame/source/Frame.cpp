@@ -188,7 +188,7 @@ void Frame::stop() {
 }
 
 /*
- * Serialization / deserialization
+ * Serialization / De-serialization
  */
 
 void Frame::save(string tag) {
@@ -205,7 +205,7 @@ void Frame::save(string tag) {
     unsigned int num_entities = entities.size();
     archive.save<unsigned int>(num_entities);
 
-    // Loop through all entities, outputing all of thier components
+    // Loop through all entities and output all of their components
     for (auto it : archive.entity_map) {
         Entity *e = it.first;
 

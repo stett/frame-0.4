@@ -33,6 +33,7 @@ namespace frame {
                 archive->save<Entity*>(child);
             }
         }
+
         virtual void load(ArchiveReader* archive) {
             unsigned int num_children;
             archive->load<unsigned int>(num_children);
