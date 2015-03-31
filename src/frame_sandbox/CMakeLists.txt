@@ -13,7 +13,8 @@ include_directories(${FrameSandbox_SOURCE_DIR})
 include_directories(${Frame_SOURCE_DIR}/include)
 
 # Define the executable
-add_executable(FrameSandbox main.cpp components.cpp)
+file(GLOB Components components/*.cpp)
+add_executable(FrameSandbox main.cpp components.cpp ${Components})
 
 # Make links
 target_link_libraries(FrameSandbox Frame Box2D ${SFML_LIBRARIES})
