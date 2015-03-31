@@ -10,7 +10,7 @@ BoxNode::BoxNode() {
     parent = 0;
     for (int x = 0; x < 7; x ++)
     for (int y = 0; y < 7; y ++)
-        slots[x][y] = Slot(this, 0, x, y);
+        slots[x][y] = Slot(0, x, y);
 }
 
 
@@ -18,7 +18,7 @@ BoxNode::~BoxNode() {
 
     // Remove this box-node from its parent's children
     if (parent)
-        parent->get_component<BoxNode>()->remove_child(entity);
+        parent->remove_child(entity);
 
     // Unset the parent pointers of this box-node's children
     while (children.size())
@@ -37,7 +37,7 @@ BoxNode* BoxNode::set_parent(Entity* e, int x, int y) {
     // This will clear the parent/slot if they're set,
     // so we don't have to do it manually.
     if (parent)
-        parent->get_component<BoxNode>()->remove_child(entity);
+        parent->remove_child(entity);
 
     // If a new non-null parent was passed in, add this to its children
     if (e)
@@ -50,12 +50,12 @@ BoxNode* BoxNode::set_parent(Entity* e, int x, int y) {
 BoxNode* BoxNode::set_slot(int x, int y) {
 
     // If we don't have a parent or the target slot is full, stop here.
-    if (!parent || slot->node->slots[x][y].child)
+    if (!parent || parent->slots[x][y].child)
         return this;
 
     // Remove from previous slot and add to new slot
     slot->child = 0;
-    slot = &slot->node->slots[x][y];
+    slot = &parent->slots[x][y];
     slot->child = entity;
 }
 
@@ -74,7 +74,7 @@ BoxNode* BoxNode::add_child(Entity* e, int x, int y) {
 
     // Make sure the child has a box-node component. Set it's parent and slot.
     auto node = e->get_or_add_component<BoxNode>();
-    node->parent = entity;
+    node->parent = this;
     node->slot = &slots[x][y];
 
     // Chain
