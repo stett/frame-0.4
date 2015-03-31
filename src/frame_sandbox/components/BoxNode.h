@@ -36,6 +36,10 @@ class BoxNode : public Component {
 
  public:
     BoxNode* set_parent(Entity* e, int x, int y);
+    BoxNode* set_slot(int x, int y);
     BoxNode* add_child(Entity* e, int x, int y);
     BoxNode* remove_child(Entity* e);
+    Slot* get_slot() { return slot; }
+    Slot* get_slot(int x, int y) { return &slots[x][y]; }
+    const set<Entity*>& get_children() { return children; }
 };

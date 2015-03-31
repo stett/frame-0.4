@@ -47,6 +47,18 @@ BoxNode* BoxNode::set_parent(Entity* e, int x, int y) {
     return this;
 }
 
+BoxNode* BoxNode::set_slot(int x, int y) {
+
+    // If we don't have a parent or the target slot is full, stop here.
+    if (!parent || slot->node->slots[x][y].child)
+        return this;
+
+    // Remove from previous slot and add to new slot
+    slot->child = 0;
+    slot = &slot->node->slots[x][y];
+    slot->child = entity;
+}
+
 BoxNode* BoxNode::add_child(Entity* e, int x, int y) {
 
     // If there's already something in this slot, stop here.
