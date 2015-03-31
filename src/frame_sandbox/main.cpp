@@ -7,6 +7,7 @@
 #include "systems/Render.hpp"
 #include "systems/Window.hpp"
 #include "components/Sprite.hpp"
+#include "components/BoxNode.h"
 #include "entity_factories.hpp"
 
 int main(int argc, char** argv) {
@@ -20,7 +21,13 @@ int main(int argc, char** argv) {
     f.add_system<Window>();
 
     // Add an entity with a sprite component
-    f.add_entity<Sprite>();
+    frame::Entity* box0 = f.add_entity<BoxNode>();
+    //frame::Entity* box1 = f.add_entity<BoxNode, Sprite>();
+    //frame::Entity* box2 = f.add_entity<BoxNode, Sprite>();
+    //frame::Entity* box3 = f.add_entity<BoxNode, Sprite>();
+
+    //box1->get_component<BoxNode>()->set_parent(box0);
+    //box2->get_component<BoxNode>()->set_parent(box0);
 
     // Run the program
     f.run();

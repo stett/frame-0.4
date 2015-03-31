@@ -13,6 +13,7 @@ include_directories(${FrameSandbox_SOURCE_DIR})
 include_directories(${Frame_SOURCE_DIR}/include)
 
 # Define the executable
+#file(GLOB Components components *.cpp)
 add_executable(FrameSandbox main.cpp components.cpp components/BoxNode.cpp)
 
 # Make links
