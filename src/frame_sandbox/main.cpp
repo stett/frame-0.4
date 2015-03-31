@@ -1,5 +1,4 @@
-// Copyright [2014] By Stett ...
-// ... to make his whiny-ass linter shut up about friggin' copyrights.
+
 
 
 #include "frame/Frame.h"
@@ -20,11 +19,12 @@ int main(int argc, char** argv) {
     f.add_system<Render>();
     f.add_system<Window>();
 
-    // Add an entity with a sprite component
+    // Add an entity with a sprite component and a child
     auto box0 = f.add_entity<Sprite, BoxNode>();
     box0->get_component<BoxNode>()
         ->add_child(f.add_entity<Sprite>(), 3, 3);
 
+    // Add another child using the set-parent method
     auto box1 = f.add_entity<Sprite, BoxNode>();
     box1->get_component<BoxNode>()
         ->set_parent(box0, 2, 3);
