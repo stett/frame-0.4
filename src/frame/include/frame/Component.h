@@ -51,8 +51,8 @@ namespace frame {
 #define REGISTER_FRAME_COMPONENT(COMPONENT_TYPE)                \
     function<frame::Component*()> COMPONENT_TYPE ## Prototype = \
     frame::Component::register_component(                       \
-        STR(COMPONENT_TYPE),                                    \
-        type_index(typeid(COMPONENT_TYPE)),                     \
-        []() {                                                  \
+        STR(COMPONENT_TYPE), /* class name */                   \
+        type_index(typeid(COMPONENT_TYPE)), /* class type id */ \
+        []() { /* anonymous factory function */                 \
             return new COMPONENT_TYPE();                        \
         });
