@@ -5,10 +5,18 @@ REGISTER_FRAME_COMPONENT(BoxNode);
 
 
 BoxNode::BoxNode() {
+
+    // Clear parent pointer
     parent = 0;
+
+    // Make a bunch of empty slots
     for (int x = 0; x < 7; x ++)
     for (int y = 0; y < 7; y ++)
         slots[x][y] = Slot(0, x, y);
+
+    // Clear doors
+    for (int face = 0; face < 4; face ++)
+        doors[face] = 0;
 }
 
 
@@ -21,6 +29,10 @@ BoxNode::~BoxNode() {
     // Unset the parent pointers of this box-node's children
     while (children.size())
         remove_child(*children.begin());
+
+    // Delete doors if there are any
+    for (int face = 0; face < 4; face ++)
+        remove_door((BoxFace)face);
 }
 
 
@@ -57,6 +69,31 @@ BoxNode* BoxNode::set_slot(int x, int y) {
     slot->child = entity;
 }
 
+BoxNode* BoxNode::set_door(BoxFace face, int pos, bool open) {
+
+    // Get the door slot
+    int x = face == Left ? 0 : (face == Right ? 6 : pos);
+    int y = face == Top ? 0 : (face == Bottom ? 6 : pos);
+    auto slot = &slots[x][y];
+
+    // If there's already a door in this face, get it.
+    // If it's not in the right slot, delete it.
+    auto door = doors[face];
+    if (door && door->slot != slot)
+        remove_door(face);
+
+    // If we don't have a door here yet, add a new one
+    if (!door)
+        door = new BoxDoor(face, slot, open);
+
+    // Okay so we're guaranteed a door at the right place at this point.
+    // Now let's set it's openness.
+    door->open = open;
+
+    // Chain
+    return this;
+}
+
 BoxNode* BoxNode::add_child(Entity* e, int x, int y) {
 
     // If there's already something in this slot, stop here.
@@ -91,6 +128,20 @@ BoxNode* BoxNode::remove_child(Entity* e) {
     node->parent = 0;
     node->slot->child = 0;
     node->slot = 0;
+
+    // Chain
+    return this;
+}
+
+BoxNode* BoxNode::remove_door(BoxFace face) {
+
+    // If there isn't a door in this face, stop here
+    if (!doors[face])
+        return this;
+
+    // If there is, delete it and set door pointer to zero
+    delete doors[face];
+    doors[face] = 0;
 
     // Chain
     return this;
