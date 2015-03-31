@@ -1,5 +1,3 @@
-
-
 #include "frame/Entity.h"
 #include "frame/core/Parent.h"
 #include "frame/core/Children.h"

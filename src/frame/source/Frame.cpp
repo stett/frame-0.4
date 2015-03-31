@@ -1,6 +1,3 @@
-
-
-
 #include <fstream>
 #include <typeindex>
 #include <typeinfo>

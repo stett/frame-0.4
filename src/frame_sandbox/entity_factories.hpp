@@ -1,6 +1,3 @@
-
-
-
 #pragma once
 #include "frame/Frame.h"
 #include "frame/Entity.h"

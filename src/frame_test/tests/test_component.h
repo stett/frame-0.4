@@ -1,5 +1,3 @@
-
-
 #pragma once
 #include <typeindex>
 #include <typeinfo>

@@ -1,5 +1,3 @@
-
-
 #include <cstdarg>
 #include "frame/Entity.h"
 #include "frame/core/Parent.h"

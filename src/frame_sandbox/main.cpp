@@ -1,6 +1,3 @@
-
-
-
 #include "frame/Frame.h"
 #include "systems/Physics.hpp"
 #include "systems/Render.hpp"

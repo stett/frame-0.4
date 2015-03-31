@@ -1,5 +1,3 @@
-
-
 #include "tests/components/Name.h"
 #include "tests/components/Position.h"
 #include "tests/components/Velocity.h"

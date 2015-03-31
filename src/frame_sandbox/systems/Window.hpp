@@ -1,5 +1,3 @@
-
-
 #pragma once
 
 #include <SFML/OpenGL.hpp>

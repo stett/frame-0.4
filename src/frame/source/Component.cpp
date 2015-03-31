@@ -1,5 +1,3 @@
-
-
 #include <typeindex>
 #include <typeinfo>
 #include <string>

@@ -1,6 +1,3 @@
-
-
-
 #pragma once
 #include "frame/Node.h"
 #include "systems/FixedStep.hpp"

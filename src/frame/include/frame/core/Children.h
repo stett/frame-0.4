@@ -1,5 +1,3 @@
-
-
 #pragma once
 #include <set>
 #include "frame/Component.h"

@@ -1,5 +1,3 @@
-
-
 #include "tests/test_frame.h"
 #include "tests/test_core.h"
 #include "tests/test_component.h"

@@ -1,5 +1,3 @@
-
-
 #include "components/BoxNode.h"
 
 
