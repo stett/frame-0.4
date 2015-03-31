@@ -12,12 +12,31 @@ using frame::Component;
 
 class BoxNode;
 
+enum BoxFace { Top = 0, Right, Bottom, Left };
+
 
 struct Slot {
+    BoxNode* node;
     Entity* child;
     int x, y;
-    Slot(Entity* child = 0, int x = 0, int y = 0)
-    : child(child), x(x), y(y) {}
+    Slot* adj[4];
+
+    Slot(BoxNode* node = 0, Entity* child = 0, int x = 0, int y = 0)
+    : node(node), child(child), x(x), y(y) {
+        for (int face = 0; face < 4; face ++)
+            adj[face] = 0;
+    }
+};
+
+
+struct BoxDoor {
+    BoxFace face;
+    Slot* slot;
+    bool open;
+    float open_t;
+
+    BoxDoor(BoxFace face, Slot* slot, bool open = false)
+    : face(face), slot(slot), open(open), open_t(open ? 1 : 0) {}
 };
 
 
@@ -27,6 +46,7 @@ class BoxNode : public Component {
     set<Entity*> children;
     Slot* slot;
     Slot slots[7][7];
+    BoxDoor* doors[4];
 
  public:
     BoxNode();
@@ -35,12 +55,18 @@ class BoxNode : public Component {
  public:
     BoxNode* set_parent(Entity* e, int x, int y);
     BoxNode* set_slot(int x, int y);
+    BoxNode* set_door(BoxFace face, int pos, bool open);
     BoxNode* add_child(Entity* e, int x, int y);
     BoxNode* remove_child(Entity* e);
+    BoxNode* remove_door(BoxFace face);
     Entity* get_parent() { return parent ? parent->entity : 0; }
     Slot* get_slot() { return slot; }
     Slot* get_slot(int x, int y) { return &slots[x][y]; }
     const set<Entity*>& get_children() { return children; }
+
+ protected:
+    void find_edge_adjacencies();
+    void find_edge_adjacencies(BoxFace face);
 
  protected:
     virtual void save(frame::ArchiveWriter* archive) {
