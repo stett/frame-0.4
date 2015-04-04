@@ -7,7 +7,7 @@
 #include "frame/Frame.h"
 #include "frame/System.h"
 #include "frame/Node.h"
-#include "components/Sprite.hpp"
+//#include "components/Sprite.hpp"
 using std::shared_ptr;
 using std::string;
 using frame::Frame;
@@ -49,7 +49,7 @@ class Window : public System {
     void start() {
 
         // Collect entities with sprite components
-        sprites = f->add_node<Sprite>();
+        //sprites = f->add_node<Sprite>();
 
         // Create the window object
         window = shared_ptr<sf::RenderWindow>(
@@ -64,8 +64,8 @@ class Window : public System {
     }
 
     void step() {
-        for (auto e : *sprites)
-            window->draw(e->get_component<Sprite>()->sprite);
+        //for (auto e : *sprites)
+        //    window->draw(e->get_component<Sprite>()->sprite);
     }
 
     void step_end() {

@@ -6,7 +6,7 @@
 #include "components/ViewFollow.h"
 #include "components/BackgroundTexture.h"
 #include "components/GameEntity.h"
-#include "entity_factories.hpp"
+#include "components/Texture.h"
 
 int main(int argc, char** argv) {
 
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
     // Add an entity with a sprite component and a child
     auto box0 = f.add_entity<BoxNode, ViewFollow, BackgroundTexture>();
     box0->get_component<BoxNode>()
-        ->add_child(f.add_entity<BackgroundTexture>(), 0, 0);
+        ->add_child(f.add_entity<BackgroundTexture>(), 3, 3);
 
     // Add another child using the set-parent method
     auto box1 = f.add_entity<BoxNode, BackgroundTexture>();
@@ -32,8 +32,15 @@ int main(int argc, char** argv) {
     auto player = f.add_entity<ViewFollow>();
     player->add_component<GameEntity>()
           ->set_container(box0);
-    player->add_component<Sprite>()
-          ->set_texture("jacob.png");
+    player->add_component<Texture>()
+          ->set("jacob.png");
+
+    // Add other player object to sub box
+    auto bird = f.add_entity<ViewFollow>();
+    bird->add_component<GameEntity>()
+        ->set_container(box1);
+    bird->add_component<Texture>()
+        ->set("jacob.png");
 
     // Run the program
     f.run();

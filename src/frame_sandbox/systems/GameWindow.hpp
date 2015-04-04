@@ -7,7 +7,7 @@
 #include "frame/Frame.h"
 #include "frame/System.h"
 #include "frame/Node.h"
-#include "components/Sprite.hpp"
+#include "components/Texture.h"
 #include "components/BackgroundTexture.h"
 #include "components/ViewFollow.h"
 #include "components/BoxNode.h"
@@ -58,9 +58,7 @@ class GameWindow : public System {
 
     void start() {
 
-        // Collect entities with sprite components
-        // sprites = f->add_node<Sprite>();
-        // Get the view-follow box and draw it
+        // Get the view-follow box
         follow_box = f->add_node<BoxNode, ViewFollow>();
 
         // Create the window object
@@ -123,11 +121,16 @@ class GameWindow : public System {
         if (box_entity_container) {
 
             // Draw each of the game entities
-            //for (auto game_entity : box_entity_container->get_game_entities()) {
+            for (auto game_entity : *box_entity_container) {
 
-                // If the entity has a sprite, render it
-
-            //}
+                // If the entity has a sprite, render it with the box's transforms
+                auto game_entity_texture = game_entity->get_component<Texture>();
+                if (game_entity_texture) {
+                    const sf::Texture& texture = game_entity_texture->get();
+                    sf::Sprite sprite; sprite.setTexture(texture);
+                    window->draw(sprite, sf::RenderStates(t));
+                }
+            }
         }
 
         // Render it's children
