@@ -187,6 +187,7 @@ void Frame::stop() {
     running = false;
 }
 
+
 /*
  * Serialization / De-serialization
  */

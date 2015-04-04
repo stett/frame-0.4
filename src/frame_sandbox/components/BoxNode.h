@@ -47,6 +47,7 @@ class BoxNode : public Component {
     Slot* slot;
     Slot slots[7][7];
     BoxDoor* doors[4];
+    int depth;
 
  public:
     BoxNode();
@@ -62,11 +63,13 @@ class BoxNode : public Component {
     Entity* get_parent() { return parent ? parent->entity : 0; }
     Slot* get_slot() { return slot; }
     Slot* get_slot(int x, int y) { return &slots[x][y]; }
+    int get_depth() { return depth; }
     const set<Entity*>& get_children() { return children; }
 
  protected:
     void find_edge_adjacencies();
     void find_edge_adjacencies(BoxFace face);
+    void find_depth();
 
  protected:
     virtual void save(frame::ArchiveWriter* archive) {

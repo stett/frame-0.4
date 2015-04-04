@@ -16,6 +16,10 @@ class PhysicsWorld : public frame::Component {
     PhysicsWorld() : world_edges(0) {
         world = shared_ptr<b2World>(new b2World(b2Vec2(0, 40)));
     }
+
+    ~PhysicsWorld() {
+        // TODO: Remove all physics bodies from their entities
+    }
 };
 
 

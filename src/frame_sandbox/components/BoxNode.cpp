@@ -9,6 +9,9 @@ BoxNode::BoxNode() {
     // Clear parent pointer
     parent = 0;
 
+    // Default depth to zero
+    depth = 0;
+
     // Make a bunch of empty slots with coordinates and internal adjacencies
     for (int x = 0; x < 7; x ++)
     for (int y = 0; y < 7; y ++) {
@@ -122,8 +125,9 @@ BoxNode* BoxNode::add_child(Entity* e, int x, int y) {
     node->parent = this;
     node->slot = &slots[x][y];
     
-    // Clean up edge adjacencies
+    // Clean up child edge adjacencies & depths
     node->find_edge_adjacencies();
+    node->find_depth();
 
     // Chain
     return this;
@@ -142,8 +146,9 @@ BoxNode* BoxNode::remove_child(Entity* e) {
     node->slot->child = 0;
     node->slot = 0;
 
-    // Clean up edge adjacencies
+    // Clean up child edge adjacencies & depths
     node->find_edge_adjacencies();
+    node->find_depth();
 
     // Chain
     return this;
@@ -213,4 +218,20 @@ void BoxNode::find_edge_adjacencies(BoxFace face) {
         if (edge_slot->child)
             edge_slot->child->get_component<BoxNode>()->find_edge_adjacencies();
     }
+}
+
+void BoxNode::find_depth() {
+
+    // If we have a parent, the new depth will be it's depth + 1.
+    // Otherwise, we're at the top, so depth of 0.
+    auto new_depth = parent ? parent->depth + 1 : 0;
+
+    // Set the depth and record whether or not it changed.
+    bool depth_changed = new_depth != depth;
+    depth = new_depth;
+
+    // If the depth changed, set the depth of all the children
+    if (depth_changed)
+        for (auto child : children)
+            child->get_component<BoxNode>()->find_depth();
 }
