@@ -8,14 +8,16 @@
 #include "frame/System.h"
 #include "frame/Node.h"
 #include "components/Sprite.hpp"
-#include "components/RenderTexture.h"
+#include "components/BackgroundTexture.h"
 #include "components/ViewFollow.h"
+#include "components/BoxNode.h"
+#include "components/GameEntityContainer.h"
+#include "components/GameEntity.h"
 using std::shared_ptr;
 using std::string;
 using frame::Frame;
 using frame::System;
 using frame::Node;
-
 
 
 const int BOX_RENDER_DEPTH = 3;
@@ -101,20 +103,29 @@ class GameWindow : public System {
         auto box_node = e->get_component<BoxNode>();
 
         // Render the background if there is one
-        auto box_background = e->get_component<Sprite>();
-        if (box_background) {
+        auto box_bg_texture = e->get_component<BackgroundTexture>();
+        if (box_bg_texture) {
 
-            // Scale the background sprite 
-            sf::Texture texture; texture.loadFromFile("placeholder.png");
-            sf::Sprite sprite; sprite.setTexture(texture); //box_background->sprite;
-            sf::Vector2u size = sprite.getTexture()->getSize();
-            sprite.setScale(
-                sf::Vector2f(
-                    BOX_RENDER_SIZE / size.x,
-                    BOX_RENDER_SIZE / size.y));
+            // Scale the background sprite so that it's the correct render size
+            const sf::Texture& texture = box_bg_texture->get();
+            sf::Sprite sprite; sprite.setTexture(texture);
+            sf::Vector2u size = texture.getSize();
+            sprite.setScale(sf::Vector2f(BOX_RENDER_SIZE / size.x, BOX_RENDER_SIZE / size.y));
 
             // Queue it up.
             window->draw(sprite, sf::RenderStates(t));
+        }
+
+        // Render child game entities if there are any
+        auto box_entity_container = e->get_component<GameEntityContainer>();
+        if (box_entity_container) {
+
+            // Draw each of the game entities
+            //for (auto game_entity : box_entity_container->get_game_entities()) {
+
+                // If the entity has a sprite, render it
+
+            //}
         }
 
         // Render it's children

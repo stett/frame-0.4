@@ -2,16 +2,16 @@
 #include <list>
 #include "frame/Entity.h"
 #include "frame/Component.h"
-#include "components/GameEntityContainer.h"
 using std::list;
 using frame::Entity;
 using frame::Component;
 
-class GameEntity : public Component {
+class GameEntityContainer : public Component {
+    friend class GameEntity;
  protected:
-    GameEntityContainer* container;
+    list<Entity*> game_entities;
 
  public:
-    GameEntity();
-    ~GameEntity();
+    GameEntityContainer();
+    ~GameEntityContainer();
 };
