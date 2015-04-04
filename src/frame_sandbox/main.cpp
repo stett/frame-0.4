@@ -7,6 +7,7 @@
 #include "components/BackgroundTexture.h"
 #include "components/GameEntity.h"
 #include "components/Texture.h"
+#include "entity_factories.hpp"
 
 int main(int argc, char** argv) {
 
@@ -18,29 +19,20 @@ int main(int argc, char** argv) {
     //f.add_system<RenderBoxes>();
     f.add_system<GameWindow>();
 
-    // Add an entity with a sprite component and a child
-    auto box0 = f.add_entity<BoxNode, ViewFollow, BackgroundTexture>();
-    box0->get_component<BoxNode>()
-        ->add_child(f.add_entity<BackgroundTexture>(), 3, 3);
+    // Add the root box entity
+    auto root_box = box_entity(&f);
+    root_box->add_component<ViewFollow>();
 
-    // Add another child using the set-parent method
-    auto box1 = f.add_entity<BoxNode, BackgroundTexture>();
-    box1->get_component<BoxNode>()
-        ->set_parent(box0, 2, 3);
+    // Add some child-boxes
+    auto box0 = box_entity(&f, root_box, 1, 0);
+    auto box1 = box_entity(&f, root_box, 2, 3);
+    auto box2 = box_entity(&f, box1, 2, 2);
 
     // Add a player object to the root box
-    auto player = f.add_entity<ViewFollow>();
-    player->add_component<GameEntity>()
-          ->set_container(box0);
-    player->add_component<Texture>()
-          ->set("jacob.png");
+    auto player = game_entity(&f, root_box);
+    auto bird = game_entity(&f, box1);
+    auto jacob = game_entity(&f, box2);
 
-    // Add other player object to sub box
-    auto bird = f.add_entity<ViewFollow>();
-    bird->add_component<GameEntity>()
-        ->set_container(box1);
-    bird->add_component<Texture>()
-        ->set("jacob.png");
 
     // Run the program
     f.run();

@@ -1,32 +1,38 @@
 #pragma once
 #include "frame/Frame.h"
 #include "frame/Entity.h"
-#include "frame/core/Parent.h"
-#include "frame/core/Children.h"
+#include "components/BackgroundTexture.h"
+#include "components/BoxNode.h"
 #include "components/PhysicsBody.hpp"
 #include "components/PhysicsWorld.hpp"
 using frame::Frame;
 using frame::Entity;
-using frame::Parent;
-using frame::Children;
 
-/*
 Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0) {
 
     // Create a root metabox
-    auto e = f->add_entity<
-        //Sprite,
-        Children,
-        //Slots,
-        //BoxDoors,
-        PhysicsWorld
-    >();
+    auto e = f->add_entity<BoxNode, PhysicsWorld>();
+
+    // Add the background texture
+    e->add_component<BackgroundTexture>()
+     ->set("7grid.png");
+
 
     // If parent is set, add necessary extra parameters
     if (parent) {
-        e->add_component<Parent>()->set(parent);
-        //e->add_component<Slot>()->set(slot_x, slot_y);
-        e->add_component<PhysicsBody>();
+        e->get_component<BoxNode>()
+         ->set_parent(parent, slot_x, slot_y);
     }
+
+    // Return the new metabox
+    return e;
 }
-*/
+
+Entity* game_entity(Frame* f, Entity* box) {
+    auto e = f->add_entity<ViewFollow>();
+    e->add_component<GameEntity>()
+     ->set_container(box);
+    e->add_component<Texture>()
+     ->set("jacob.png");
+    return e;
+}

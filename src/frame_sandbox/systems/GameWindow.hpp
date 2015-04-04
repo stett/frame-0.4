@@ -144,11 +144,11 @@ class GameWindow : public System {
             auto child_t = sf::Transform().translate(child_slot->x * BOX_RENDER_SIZE / 7.f,
                                                      child_slot->y * BOX_RENDER_SIZE / 7.f)
                                           .scale(sf::Vector2f(1.f / 7.f, 1.f / 7.f))
-                                          .rotate(0.f)
-                                          .combine(t);
+                                          .rotate(0.f);
+                                          //.combine(t);
 
             // Draw this child
-            draw_box(child, child_t, depth + 1);
+            draw_box(child, t * child_t, depth + 1);
         }
 
         // Render the foreground
