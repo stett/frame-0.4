@@ -1,17 +1,29 @@
 #pragma once
-#include <list>
-#include "frame/Entity.h"
 #include "frame/Component.h"
-#include "components/GameEntityContainer.h"
-using std::list;
-using frame::Entity;
 using frame::Component;
+using frame::Entity;
 
 class GameEntity : public Component {
- protected:
-    GameEntityContainer* container;
+    friend class GameEntityContainer;
 
- public:
-    GameEntity();
-    ~GameEntity();
+protected:
+    Entity* container;
+
+public:
+    GameEntity() : container(0) {}
+    ~GameEntity() { clear_container(); }
+
+public:
+    GameEntity* set_container(Entity* e_container);
+    GameEntity* clear_container();
+    Entity* get_container() { return container; }
+
+protected:
+    virtual void save(frame::ArchiveWriter* archive) {
+        archive->save<Entity*>(container);
+    }
+
+    virtual void load(frame::ArchiveReader* archive) {
+        archive->load<Entity*>(container);
+    }
 };

@@ -110,7 +110,9 @@ class GameWindow : public System {
             const sf::Texture& texture = box_bg_texture->get();
             sf::Sprite sprite; sprite.setTexture(texture);
             sf::Vector2u size = texture.getSize();
-            sprite.setScale(sf::Vector2f(BOX_RENDER_SIZE / size.x, BOX_RENDER_SIZE / size.y));
+            sprite.setScale(sf::Vector2f(
+                (float)BOX_RENDER_SIZE / (float)size.x,
+                (float)BOX_RENDER_SIZE / (float)size.y));
 
             // Queue it up.
             window->draw(sprite, sf::RenderStates(t));

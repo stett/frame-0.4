@@ -29,9 +29,11 @@ int main(int argc, char** argv) {
         ->set_parent(box0, 2, 3);
 
     // Add a player object to the root box
-    auto player = f.add_entity<ViewFollow, Sprite>();
-    //player->add_component<GameEntity>()
-    //      ->set_container(box0);
+    auto player = f.add_entity<ViewFollow>();
+    player->add_component<GameEntity>()
+          ->set_container(box0);
+    player->add_component<Sprite>()
+          ->set_texture("jacob.png");
 
     // Run the program
     f.run();

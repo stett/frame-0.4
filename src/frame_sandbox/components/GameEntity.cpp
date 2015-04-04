@@ -1,14 +1,39 @@
-#include "GameEntity.h"
+#include "frame/Entity.h"
+#include "components/GameEntity.h"
+#include "components/GameEntityContainer.h"
+using frame::Entity;
 
 REGISTER_FRAME_COMPONENT(GameEntity);
 
+GameEntity* GameEntity::set_container(Entity* e_container) {
 
-GameEntity::GameEntity() : container(0) {}
+    // If we had a previous parent, remove ourself
+    // from its list of children.
+    if (container) clear_container();
 
-GameEntity::~GameEntity() {
+    // Set the parent pointer
+    container = e_container;
 
-    // Remove from container if there was one
-    if (container) {
-        // erase from the container's list
-    }
+    // Add a children component to the new parent if necessary,
+    // and add this entity to its child list.
+    auto game_entity_container = container->get_or_add_component<GameEntityContainer>();
+    game_entity_container->game_entity_list.insert(entity);
+
+    // Return this parent for command chaining
+    return this;
+}
+
+GameEntity* GameEntity::clear_container() {
+
+    // If parent was unset, then we don't need to remove this
+    // from its children.
+    if (container == 0)
+        return this;
+
+    // Remove ourselves from our old parent's child list
+    auto game_entity_container = container->get_component<GameEntityContainer>();
+    game_entity_container->game_entity_list.erase(entity);
+
+    // Return this parent for command chaining
+    return this;
 }
