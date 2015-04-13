@@ -4,6 +4,7 @@
 #include "tests/test_system.h"
 #include "tests/test_serialization.h"
 #include "tests/test_singleton.h"
+#include "tests/test_event.h"
 #include "gtest/gtest.h"
 
 int main(int argc, char** argv) {

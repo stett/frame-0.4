@@ -30,9 +30,15 @@ Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0)
 
 Entity* game_entity(Frame* f, Entity* box) {
     auto e = f->add_entity<ViewFollow>();
+
+    //
     e->add_component<GameEntity>()
      ->set_container(box);
+
+    //
     e->add_component<Texture>()
      ->set("jacob.png");
+
+    //
     return e;
 }

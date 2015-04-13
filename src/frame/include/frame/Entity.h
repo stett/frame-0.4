@@ -4,6 +4,7 @@
 #include <map>
 #include "frame/Component.h"
 #include "frame/Node.h"
+#include "frame/Event.h"
 #include "frame/interface/FrameInterface.h"
 using std::set;
 using std::map;
@@ -64,6 +65,10 @@ namespace frame {
             if (c == 0)
                 c = add_component<T>();
             return c;
+        }
+
+        void trigger_event(Event* e) {
+            ((FrameInterface*)f)->trigger_event(e);
         }
     };
 }

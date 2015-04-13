@@ -7,6 +7,7 @@
 #include "frame/Entity.h"
 #include "frame/Node.h"
 #include "frame/System.h"
+#include "frame/Event.h"
 #include "frame/Singleton.h"
 #include "frame/interface/FrameInterface.h"
 using std::string;
@@ -23,6 +24,7 @@ namespace frame {
         set<Node*> nodes;
         set<System*> systems;
         map<type_index, Singleton*> singletons;
+        map<type_index, set<EventHandlerBase*>> event_handlers;
         bool running;
 
     public:
@@ -86,6 +88,12 @@ namespace frame {
             return (T*)singletons[type];
         }
 
+        template <typename T>
+        void add_event_handler(EventHandler<T>* s) {
+            auto event_type = type_index(typeid(T));
+            event_handlers[event_type].insert(s);
+        }
+
     private:
         void ravel(Entity* e);
         void ravel(Node* n);
@@ -95,6 +103,8 @@ namespace frame {
         void unravel(Node* n);
         void unravel(Node* n, Entity* e);
 
+        void clear_events();
+
     public:
         virtual void remove_entity(Entity* e);
         virtual void add_component_to_entity(Entity* e, Component* c);
@@ -103,6 +113,8 @@ namespace frame {
         virtual void remove_node(Node* n);
         virtual void add_components_to_node(Node* n, unsigned int mask);
         virtual void remove_components_from_node(Node* n, unsigned int mask);
+
+        virtual void trigger_event(Event* e);
 
     public:
         virtual void run();

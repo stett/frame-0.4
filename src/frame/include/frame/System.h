@@ -4,6 +4,8 @@
 namespace frame {
 
     class Frame;
+    class Event;
+
 
     class System {
         friend class Frame;
@@ -21,5 +23,6 @@ namespace frame {
         virtual void step() {}
         virtual void step_end() {}
         virtual void stop() {}
+        //virtual void event(Event* e) {}
     };
 }
