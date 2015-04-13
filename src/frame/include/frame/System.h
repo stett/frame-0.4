@@ -4,7 +4,6 @@
 namespace frame {
 
     class Frame;
-    class Event;
 
 
     class System {

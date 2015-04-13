@@ -26,6 +26,6 @@ namespace {
         auto trigger = f.add_entity<Trigger>();
         trigger->get_component<Trigger>()->trigger("killa'");
         EXPECT_EQ(handle->event_handled, true);
-        //EXPECT_EQ(handle->message, "killa'");
+        EXPECT_EQ(handle->message, "killa'");
     }
 };

@@ -28,8 +28,9 @@ class Handle : public System {
         the_event.add_listener<Handle>(this, &Handle::handle);
     }
 
-    void handle() {
+    void handle(string _message) {
         event_handled = true;
+        message = _message;
         //auto a = type_index(typeid(*e));
         //message = e->message;
     }

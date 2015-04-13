@@ -5,7 +5,7 @@
 #include "frame/Event.h"
 using std::string;
 
-frame::Event the_event;
+frame::Event<string> the_event;
 
 class Trigger : public frame::Component {
  public:
@@ -13,6 +13,6 @@ class Trigger : public frame::Component {
     virtual ~Trigger() {}
 
     void trigger(string message) {
-        the_event.trigger();
+        the_event.trigger(message);
     }
 };
