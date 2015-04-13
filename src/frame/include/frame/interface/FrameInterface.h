@@ -9,7 +9,6 @@ namespace frame {
     class Component;
     class Node;
     class System;
-    class Event;
 
     class FrameInterface {
     public:
@@ -31,9 +30,6 @@ namespace frame {
         virtual void remove_node(Node* n) = 0;
         virtual void add_components_to_node(Node* n, unsigned int mask) = 0;
         virtual void remove_components_from_node(Node* n, unsigned int mask) = 0;
-
-        // Event interface
-        virtual void trigger_event(Event* e) = 0;
     };
 }
   

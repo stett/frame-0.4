@@ -66,9 +66,5 @@ namespace frame {
                 c = add_component<T>();
             return c;
         }
-
-        void trigger_event(Event* e) {
-            ((FrameInterface*)f)->trigger_event(e);
-        }
     };
 }

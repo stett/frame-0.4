@@ -5,19 +5,14 @@
 #include "frame/Event.h"
 using std::string;
 
-struct TriggerEvent : public frame::Event {
-    TriggerEvent(string message) : message(message) {}
-    string message;
-};
+frame::Event the_event;
 
 class Trigger : public frame::Component {
  public:
     Trigger() {}
     virtual ~Trigger() {}
 
-    void send(string message) {
-        auto e = new TriggerEvent(message);
-        entity->trigger_event(e);
-        delete e;
+    void trigger(string message) {
+        the_event.trigger();
     }
 };

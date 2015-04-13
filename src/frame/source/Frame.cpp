@@ -25,7 +25,6 @@ using frame::FrameInterface;
 using frame::Entity;
 using frame::Node;
 using frame::System;
-//using frame::Event;
 
 
 /*
@@ -62,10 +61,6 @@ void Frame::clear_systems() {
 }
 
 void Frame::remove_system(System* s) {
-
-    // Remove this system from all event handling
-    for (auto handlers : event_handlers)
-        handlers.second.erase(s);
 
     // Stop, remove, and delete the system
     s->stop();
@@ -170,17 +165,6 @@ void Frame::add_components_to_node(Node* n, unsigned int mask) {
 void Frame::remove_components_from_node(Node* n, unsigned int mask) {
     n->mask &= !mask;
     ravel(n);
-}
-
-
-/*
- * Event handling interface
- */
-
-void Frame::trigger_event(Event* e) {
-    auto event_type = type_index(typeid(*e));
-    for (System* handler : event_handlers[event_type])
-        handler->event(e);
 }
 
 

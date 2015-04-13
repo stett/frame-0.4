@@ -11,12 +11,11 @@ using frame::Frame;
 using frame::System;
 using frame::Node;
 using frame::Event;
-using frame::EventHandler;
 using std::string;
 using std::type_index;
 
 
-class Handle : public System, public EventHandler<TriggerEvent> {
+class Handle : public System {
  public:
     bool event_handled;
     string message;
@@ -26,19 +25,12 @@ class Handle : public System, public EventHandler<TriggerEvent> {
 
  protected:
     void start() {
-        f->add_event_handler<TriggerEvent>(this);
+        the_event.add_listener<Handle>(this, &Handle::handle);
     }
 
-    /*void event(Event* e) {
+    void handle() {
         event_handled = true;
-        auto a = type_index(typeid(*e));
-        int i;
+        //auto a = type_index(typeid(*e));
         //message = e->message;
-    }*/
-
-    void handle(TriggerEvent* e) {
-        event_handled = true;
-        auto a = type_index(typeid(*e));
-        message = e->message;
     }
 };

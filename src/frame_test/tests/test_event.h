@@ -24,7 +24,7 @@ namespace {
     TEST_F(EventTest, SystemHandlesEvents) {
         auto handle = f.add_system<Handle>();
         auto trigger = f.add_entity<Trigger>();
-        trigger->get_component<Trigger>()->send("killa'");
+        trigger->get_component<Trigger>()->trigger("killa'");
         EXPECT_EQ(handle->event_handled, true);
         //EXPECT_EQ(handle->message, "killa'");
     }
