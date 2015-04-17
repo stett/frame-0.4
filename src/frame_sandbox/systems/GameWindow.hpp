@@ -127,7 +127,10 @@ class GameWindow : public System {
                 auto game_entity_texture = game_entity->get_component<Texture>();
                 if (game_entity_texture) {
                     const sf::Texture& texture = game_entity_texture->get();
-                    sf::Sprite sprite; sprite.setTexture(texture);
+                    auto size = texture.getSize();
+                    sf::Sprite sprite;
+                    sprite.setTexture(texture);
+                    sprite.setOrigin(size.x * .5f, size.y * .5f);
                     window->draw(sprite, sf::RenderStates(t));
                 }
             }
@@ -141,17 +144,93 @@ class GameWindow : public System {
             auto child_slot = child_box_node->get_slot();
 
             // Generate the child's transform
-            auto child_t = sf::Transform().translate(child_slot->x * BOX_RENDER_SIZE / 7.f,
-                                                     child_slot->y * BOX_RENDER_SIZE / 7.f)
-                                          .scale(sf::Vector2f(1.f / 7.f, 1.f / 7.f))
-                                          .rotate(0.f);
-                                          //.combine(t);
+            auto child_t = sf::Transform()
+                .translate(child_slot->x * BOX_RENDER_SIZE / 7.f,
+                           child_slot->y * BOX_RENDER_SIZE / 7.f)
+                .scale(sf::Vector2f(1.f / 7.f, 1.f / 7.f))
+                .rotate(0.f);
 
             // Draw this child
             draw_box(child, t * child_t, depth + 1);
         }
 
+        // Render outlines around the physics bodies
+        auto physics_world = e->get_component<PhysicsWorld>();
+        if (physics_world) {
+            auto world = physics_world->get_world();
+
+            // Loop through and draw every fixture
+            for (b2Body* body = world->GetBodyList(); body; body = body->GetNext()) {
+
+                // Get the graphical transform for the body
+                auto pos = body->GetPosition();
+                auto ang = body->GetAngle();
+                auto t_body = sf::Transform()
+                    .scale(sf::Vector2f(1.f / 7.f, 1.f / 7.f))
+                    .translate(sf::Vector2f(pos.x * PIXELS_PER_METER, pos.y * PIXELS_PER_METER))
+                    .rotate(ang * 180.f / 3.14159f);
+
+                // Render each fixture in the body
+                for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext()) {
+                    b2Shape* shape = fixture->GetShape();
+                    b2Shape::Type type = shape->GetType();
+
+                    // If it's a circle, just use the built in SFML circle shape stuff
+                    if (type == b2Shape::Type::e_circle) {
+                        b2CircleShape* circle = (b2CircleShape*)shape;
+                        sf::CircleShape shape(circle->m_radius);
+                        continue;
+                    }
+
+                    // If it's not a circle, build up a list of vertices to render based on what it is.
+                    sf::VertexArray verts;
+                    verts.setPrimitiveType(sf::PrimitiveType::LinesStrip);
+
+                    // Polygon
+                    if (fixture->GetType() == b2Shape::Type::e_polygon) {
+                        auto shape = (b2PolygonShape*)fixture->GetShape();
+                        int num_verts = shape->GetVertexCount();
+                        for (int i_vert = 0; i_vert < num_verts; i_vert++) {
+                            auto b2_vert = shape->GetVertex(i_vert);
+                            sf::Vertex vert(sf::Vector2f(b2_vert.x * PIXELS_PER_METER, b2_vert.y * PIXELS_PER_METER));
+                            vert.color = sf::Color(255, 255, 255, 150);
+                            verts.append(vert);
+                        }
+                        verts.append(verts[0]);
+
+                    // Chain
+                    } else if (fixture->GetType() == b2Shape::Type::e_chain) {
+                        auto shape = (b2ChainShape*)fixture->GetShape();
+                        int num_edges = shape->GetChildCount();
+                        for (int i_edge = 0; i_edge < num_edges; i_edge++) {
+                            b2EdgeShape edge;
+                            shape->GetChildEdge(&edge, i_edge);
+                            auto b2_vert = edge.m_vertex1;
+                            sf::Vertex vert(sf::Vector2f(b2_vert.x * PIXELS_PER_METER, b2_vert.y * PIXELS_PER_METER));
+                            vert.color = sf::Color::Green;
+                            verts.append(vert);
+                        }
+                        verts.append(verts[0]);
+
+                    // Edge
+                    } else if (fixture->GetType() == b2Shape::Type::e_edge) {
+                        auto shape = (b2EdgeShape*)fixture->GetShape();
+                        sf::Vertex a(sf::Vector2f(shape->m_vertex1.x * PIXELS_PER_METER, shape->m_vertex1.y * PIXELS_PER_METER));
+                        sf::Vertex b(sf::Vector2f(shape->m_vertex2.x * PIXELS_PER_METER, shape->m_vertex2.y * PIXELS_PER_METER));
+                        a.color = b.color = sf::Color::Green;
+                        verts.append(a);
+                        verts.append(b);
+                    }
+
+                    // Draw the vertices
+                    window->draw(verts, sf::RenderStates(t * t_body));
+                }
+            }
+        }
+
+
         // Render the foreground
         // TODO
     }
+
 };

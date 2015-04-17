@@ -36,7 +36,7 @@ namespace frame {
         virtual ~Component() {}
 
     public:
-        const Entity* get_entity() const { return entity; }
+        Entity* get_entity() const { return entity; }
         unsigned int mask() const;
         string name() const;
 

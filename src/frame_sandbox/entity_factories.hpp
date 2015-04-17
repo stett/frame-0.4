@@ -3,7 +3,7 @@
 #include "frame/Entity.h"
 #include "components/BackgroundTexture.h"
 #include "components/BoxNode.h"
-#include "components/PhysicsBody.hpp"
+#include "components/PhysicsBody.h"
 #include "components/PhysicsWorld.hpp"
 using frame::Frame;
 using frame::Entity;
@@ -29,7 +29,7 @@ Entity* box_entity(Frame* f, Entity* parent = 0, int slot_x = 0, int slot_y = 0)
 }
 
 Entity* game_entity(Frame* f, Entity* box) {
-    auto e = f->add_entity<ViewFollow>();
+    auto e = f->add_entity<PhysicsBody>();
 
     //
     e->add_component<GameEntity>()

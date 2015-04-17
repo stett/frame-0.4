@@ -52,7 +52,7 @@ namespace frame {
         }
 
         template <typename T>
-        T* get_component() {
+        T* get_component() const {
             auto type = type_index(typeid(T));
             auto component_it = components.find(type);
             if (component_it == components.end()) return 0;

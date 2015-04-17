@@ -6,6 +6,8 @@ using std::shared_ptr;
 
 class PhysicsWorld : public frame::Component {
     friend class Physics;
+    friend class PhysicsBody;
+
 
  protected:
     shared_ptr<b2World> world;
@@ -20,6 +22,9 @@ class PhysicsWorld : public frame::Component {
     ~PhysicsWorld() {
         // TODO: Remove all physics bodies from their entities
     }
+
+ public:
+    shared_ptr<b2World> get_world() { return world; }
 };
 
 

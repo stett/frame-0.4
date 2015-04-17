@@ -5,10 +5,13 @@ using frame::Entity;
 
 REGISTER_FRAME_COMPONENT(GameEntity);
 
+Event<GameEntity*, Entity*, Entity*> GameEntity::container_changed;
+
 GameEntity* GameEntity::set_container(Entity* e_container) {
 
     // If we had a previous parent, remove ourself
     // from its list of children.
+    Entity* e_old_container = container;
     if (container) clear_container();
 
     // Set the parent pointer
@@ -18,6 +21,9 @@ GameEntity* GameEntity::set_container(Entity* e_container) {
     // and add this entity to its child list.
     auto game_entity_container = container->get_or_add_component<GameEntityContainer>();
     game_entity_container->game_entity_list.insert(entity);
+
+    // Trigger the container change signal
+    container_changed.trigger(this, e_container, e_old_container);
 
     // Return this parent for command chaining
     return this;

@@ -2,7 +2,7 @@
 #include "frame/Node.h"
 #include "systems/FixedStep.hpp"
 #include "components/PhysicsWorld.hpp"
-#include "components/PhysicsBody.hpp"
+#include "components/PhysicsBody.h"
 using frame::Node;
 
 
