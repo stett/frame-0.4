@@ -1,27 +1,19 @@
 Frame
 =====
 
-My own innocent little attempt at a simple Entity/Component/System engine. 
-Frame follows a generic design, but is being built with a specific application in mind (Metabox).
-
-
-Frame is *most definitely* a work in progress.
+Yet another innocent programmer's attempt to create a nice, pragmatic entity system.
 
 
 I am roughly following test driven development principals, and using the [Google Test](https://code.google.com/p/googletest/) unit testing library.
 
-The project is cross-platform and can be built using [CMake](http://www.cmake.org/).
+The project is (theoretically :P) cross-platform and can be built using [CMake](http://www.cmake.org/), but I've only tried it on Linux.
 
 
-What is this... "Frame"?
-------------------------
+Overview
+--------
 
 The Frame engine is built, quite predictably, around an object called a *frame*.
-A frame is a collection of *systems* and *components*, and is intended to represent an independent part of a program.
-
-
-For example, one might have a frame for the main game process and one for the game menu.
-The primary game process can start/stop/pause any of its frames, save or load a frame's state, or load the data from one frame into another.
+A frame is a collection of *systems*, *components*, and *entities*, and is intended to represent an independent, self-contained part of a program.
 
 
 Usage
@@ -34,10 +26,11 @@ To create a component, simply create a class that inherits from `frame::Componen
         string str;
     public:
         Name() : str("name") {}
-        virtual ~Name() {}
+
         void set(const string& str_) {
             str = str_;
         }
+
         const string& get() const {
             return str;
         }
@@ -83,16 +76,14 @@ Here's an example of a system which prints the names of all named entities at st
 
     class NameSystem : public frame::System {
         Node* named_entities;
-    public:
-        NameSystem(Frame* f) : System(f) {
-            named_entities = f->add_node<Name>();
-        }
-        ~NameSystem() {
-            named_entities->remove();
-        }
 
     protected:
         void start() {
+
+            // Create a node which will select all named entities
+            named_entities = f->add_node<Name>();
+
+            // Loop over all entities selected by the node, printing their names
             for (auto e : named_entities) {
                 cout << e->get_component<Name>().get() << endl;
             }
@@ -114,9 +105,7 @@ Building
 To build the Frame library and the FrameTest unit testing program, perform the following commands from the root of this repository.
 
     mkdir build
-    cd build
-    cmake ../src
-    make
+    ./scripts/build.sh
 
 And from there, to run FrameTest
 
