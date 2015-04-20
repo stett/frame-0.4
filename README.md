@@ -6,7 +6,7 @@ Yet another innocent programmer's attempt to create a nice, pragmatic entity sys
 
 I am roughly following test driven development principals, and using the [Google Test](https://code.google.com/p/googletest/) unit testing library.
 
-The project is (theoretically :P) cross-platform and can be built using [CMake](http://www.cmake.org/), but I've only tried it on Linux.
+The project is cross-platform (theoretically :P) and can be built using [CMake](http://www.cmake.org/), but I've only tried it on Linux.
 
 
 Overview
@@ -89,14 +89,6 @@ Here's an example of a system which prints the names of all named entities at st
             }
         }
     };
-
-
-Internal Design
----------------
-
-
-Features
---------
 
 
 Building
